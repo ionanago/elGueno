@@ -24,6 +24,7 @@ public class ProductoServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		try {
 			String nombre = request.getParameter("nombre");
 			String descripcion = request.getParameter("descripcion");
@@ -44,7 +45,7 @@ public class ProductoServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 
-			request.setAttribute("mensaje", new Mensaje("danger", "Error al dar de alta el usuario"));
+			request.setAttribute("mensaje", new Mensaje("danger", "Error al dar de alta el producto"));
 		}
 
 		request.getRequestDispatcher(PRODUCTO_JSP).forward(request, response);
