@@ -12,24 +12,28 @@ import com.ipartek.formacion.tiendavirtual.modelos.Producto;
 public class ProductosDaoMySql implements Dao<Long, Producto> {
 	private static final String PRODUCTOS_GET_ALL = "{ call productos_getAll() }";
 	private static final String PRODUCTOS_INSERT = "{ call productos_insert(?,?,?,?) }";
-	
+	private static final String PRODUCTOS_MODIFY = "{ call productos_modify(?,?,?,?) }";
+	private static final String PRODUCTOS_POR_ID = "{ call productos_get_by_id(?) }";
+	private static final String PRODUCTOS_BORRAR_ID = "{ call productos_delete_by_id(?) }";
+
 	public String url, user, password, driver;
-	
+
 	private static ProductosDaoMySql instancia;
-	
+
 	public static ProductosDaoMySql crearInstancia(String driver, String url, String user, String password) {
 		return instancia = new ProductosDaoMySql(driver, url, user, password);
 	}
-	
+
 	public static ProductosDaoMySql getInstancia() {
-		if(instancia == null) {
-			throw new AccesoDatosException("Se debe crear la instancia con crearInstancia y los datos de configuración");
+		if (instancia == null) {
+			throw new AccesoDatosException(
+					"Se debe crear la instancia con crearInstancia y los datos de configuración");
 		}
 		return instancia;
 	}
-	
+
 	private ProductosDaoMySql(String driver, String url, String user, String password) {
-		
+
 		this.url = url;
 		this.user = user;
 		this.password = password;
@@ -37,7 +41,7 @@ public class ProductosDaoMySql implements Dao<Long, Producto> {
 	}
 
 	private Connection getConnection() {
-		
+
 		try {
 			Class.forName(driver);
 			return DriverManager.getConnection(url, user, password);
@@ -77,7 +81,21 @@ public class ProductosDaoMySql implements Dao<Long, Producto> {
 
 	@Override
 	public Producto getById(Long id) {
-		throw new UnsupportedOperationException("Método no implementado");
+		try (Connection con = getConnection()) {
+			try (CallableStatement cs = con.prepareCall(PRODUCTOS_POR_ID)) {
+				ResultSet rs = cs.executeQuery();
+
+				Producto producto = new Producto(id, rs.getString("nombre"), rs.getString("descripcion"),
+						rs.getBigDecimal("precio"));
+
+				return producto;
+
+			} catch (SQLException e) {
+				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_POR_ID);
+			}
+		} catch (SQLException e) {
+			throw new AccesoDatosException("Ha habido un error al cerrar la conexión a la base de datos", e);
+		}
 	}
 
 	@Override
@@ -87,17 +105,17 @@ public class ProductosDaoMySql implements Dao<Long, Producto> {
 				cs.setString(1, producto.getNombre());
 				cs.setString(2, producto.getDescripcion());
 				cs.setBigDecimal(3, producto.getPrecio());
-				
+
 				cs.registerOutParameter(4, java.sql.Types.INTEGER);
-				
+
 				cs.executeUpdate();
-				
+
 				producto.setId(cs.getLong(4));
-				
+
 				return producto;
 
 			} catch (SQLException e) {
-				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_GET_ALL);
+				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_INSERT);
 			}
 		} catch (SQLException e) {
 			throw new AccesoDatosException("Ha habido un error al cerrar la conexión a la base de datos", e);
@@ -106,17 +124,64 @@ public class ProductosDaoMySql implements Dao<Long, Producto> {
 
 	@Override
 	public Producto update(Producto objeto) {
-		throw new UnsupportedOperationException("Método no implementado");
+		try (Connection con = getConnection()) {
+			try (CallableStatement cs = con.prepareCall(PRODUCTOS_MODIFY)) {
+				
+				cs.setLong(1, objeto.getId());
+				cs.setString(2, objeto.getNombre());
+				cs.setString(3, objeto.getDescripcion());
+				cs.setBigDecimal(4, objeto.getPrecio());
+
+				cs.executeUpdate();
+
+				
+
+			} catch (SQLException e) {
+				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_MODIFY);
+			}
+		} catch (SQLException e) {
+			throw new AccesoDatosException("Ha habido un error al cerrar la conexión a la base de datos", e);
+		}
+		throw new AccesoDatosException("no se lo que devuelve por modificar");
+
 	}
 
 	@Override
 	public Producto delete(Producto objeto) {
-		throw new UnsupportedOperationException("Método no implementado");
+
+		try (Connection con = getConnection()) {
+			try (CallableStatement cs = con.prepareCall(PRODUCTOS_BORRAR_ID)) {
+				
+				cs.setLong(1, objeto.getId());
+				cs.executeQuery();
+				
+			} catch (SQLException e) {
+				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_BORRAR_ID);
+			}
+		} catch (SQLException e) {
+			throw new AccesoDatosException("Ha habido un error al cerrar la conexión a la base de datos", e);
+
+		}
+		throw new AccesoDatosException("no se lo que devuelve por borrar por objeto(id)");
+	
 	}
 
 	@Override
 	public Producto deleteById(Long id) {
-		throw new UnsupportedOperationException("Método no implementado");
+		try (Connection con = getConnection()) {
+			try (CallableStatement cs = con.prepareCall(PRODUCTOS_BORRAR_ID)) {
+				
+				cs.setLong(1,id);
+				cs.executeQuery();
+				
+			} catch (SQLException e) {
+				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_BORRAR_ID);
+			}
+		} catch (SQLException e) {
+			throw new AccesoDatosException("Ha habido un error al cerrar la conexión a la base de datos", e);
+
+		}
+		throw new AccesoDatosException("no se lo que devuelve por borrar por id");
 	}
 
 }
