@@ -19,9 +19,9 @@
 				<td>${p.nombre}</td>
 				<td>${p.descripcion}</td>
 				<td><fmt:formatNumber value="${p.precio}" type="currency" /></td>
-				<td><a class="btn btn-primary" href="?id=${P.id}">Modificar</a> 
+				<td><a class="btn btn-primary" href="producto?id=${p.id}">Modificar</a> 
 					<%--<a onclick="return confirm('¿Estás seguro de que quieres borrar el registro cuyo id es ${libro.id}?')" class="btn btn-danger" href="admin/libroprocesar?op=borrar&id=${libro.id}">Borrar</a>--%>
-					<form style="display: inline" method="post" action="" onsubmit="return confirm('¿Estás seguro de que quieres borrar el registro cuyo id es ${P.id}?')">
+					<form style="display: inline" method="post" action="producto" onsubmit="return confirm('¿Estás seguro de que quieres borrar el registro cuyo id es ${P.id}?')">
 						<button class="btn btn-danger">Borrar</button>
 						<input type="hidden" name="id" value="${P.id}" />
 						<input type="hidden" name="op" value="borrar" />

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ipartek.formacion.tiendavirtual.modelos.Mensaje;
 import com.ipartek.formacion.tiendavirtual.modelos.Producto;
 import com.ipartek.formacion.tiendavirtual.servicios.ProductoServicio;
+import com.ipartek.formacion.tiendavirtual.servicios.ProductosServicioImpl;
 
 @WebServlet("/producto")
 public class ProductoServlet extends HttpServlet {
@@ -18,7 +19,20 @@ public class ProductoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws ServletException, IOException {String id = request.getParameter("id");
+			Producto producto = null;
+
+			if (id != null) {
+
+				long l = Long.parseLong(id);
+				
+				producto = ProductosServicioImpl.getInstancia().getById(l);
+			}
+			
+			request.setAttribute("producto", producto);
+			request.setAttribute("op", id == null ? "alta" : "modificar");
+			
+			
 		request.getRequestDispatcher(PRODUCTO_JSP).forward(request, response);
 	}
 
