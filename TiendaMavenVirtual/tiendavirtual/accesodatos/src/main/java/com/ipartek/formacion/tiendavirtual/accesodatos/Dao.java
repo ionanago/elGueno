@@ -1,5 +1,7 @@
 package com.ipartek.formacion.tiendavirtual.accesodatos;
 
+
+
 public interface Dao<PK, T> {
 	Iterable<T> getAll();
 	T getById(PK id);
@@ -7,5 +9,5 @@ public interface Dao<PK, T> {
 	T insert(T objeto);
 	T update(T objeto);
 	T delete(T objeto);
-	T deleteById(PK id);
+	Long deleteById(PK id);
 }

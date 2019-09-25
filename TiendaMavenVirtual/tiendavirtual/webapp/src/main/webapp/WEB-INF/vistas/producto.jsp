@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/vistas/includes/cabecera.jsp"%>
-
+<br>
 <form method="post">
 	<div class="form-group row">
 		<label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
@@ -34,7 +34,15 @@
 	</div>
 	<div class="form-group row">
 		<div class="col-sm-10">
-			<button type="submit" class="btn btn-primary">Añadir</button>
+		
+		<button type="submit" class="btn btn-primary">${op}</button>
+		<input	type="hidden" name="op" value="${op}"/>
+		<input type="hidden" name="id" value="${producto.id}"/>
+		
+		
+		
+			
+			
 		</div>
 	</div>
 </form>

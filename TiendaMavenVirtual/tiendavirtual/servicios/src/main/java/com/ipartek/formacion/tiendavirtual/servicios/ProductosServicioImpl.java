@@ -79,4 +79,13 @@ public class ProductosServicioImpl implements ProductoServicio {
 		}
 	}
 
+	@Override
+	public Long delete(Long id) {
+		try {
+			return dao.deleteById(id);
+			} catch (AccesoDatosException e) {
+				throw new ServiciosException("Ha habido un error al eliminar", e);
+			}
+	}
+
 }

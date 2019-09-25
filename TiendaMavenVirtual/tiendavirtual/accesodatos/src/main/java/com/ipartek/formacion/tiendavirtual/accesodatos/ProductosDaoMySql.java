@@ -1,5 +1,6 @@
 package com.ipartek.formacion.tiendavirtual.accesodatos;
 
+import java.math.BigDecimal;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -83,15 +84,22 @@ public class ProductosDaoMySql implements Dao<Long, Producto> {
 	public Producto getById(Long id) {
 		try (Connection con = getConnection()) {
 			try (CallableStatement cs = con.prepareCall(PRODUCTOS_POR_ID)) {
+				cs.setLong(1, id);
 				ResultSet rs = cs.executeQuery();
 
-				Producto producto = new Producto(id, rs.getString("nombre"), rs.getString("descripcion"),
-						rs.getBigDecimal("precio"));
+				Producto producto = null;
 
+				while (rs.next()) {
+					String nombre = rs.getString("nombre");
+					String descripcion = rs.getString("descripcion");
+					BigDecimal precio = rs.getBigDecimal("precio");
+
+					producto = new Producto(id, nombre, descripcion, precio);
+				}
 				return producto;
 
 			} catch (SQLException e) {
-				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_POR_ID);
+				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_POR_ID, e);
 			}
 		} catch (SQLException e) {
 			throw new AccesoDatosException("Ha habido un error al cerrar la conexión a la base de datos", e);
@@ -126,15 +134,15 @@ public class ProductosDaoMySql implements Dao<Long, Producto> {
 	public Producto update(Producto objeto) {
 		try (Connection con = getConnection()) {
 			try (CallableStatement cs = con.prepareCall(PRODUCTOS_MODIFY)) {
-				
+
 				cs.setLong(1, objeto.getId());
 				cs.setString(2, objeto.getNombre());
 				cs.setString(3, objeto.getDescripcion());
 				cs.setBigDecimal(4, objeto.getPrecio());
 
 				cs.executeUpdate();
-
 				
+				return objeto;
 
 			} catch (SQLException e) {
 				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_MODIFY);
@@ -142,7 +150,7 @@ public class ProductosDaoMySql implements Dao<Long, Producto> {
 		} catch (SQLException e) {
 			throw new AccesoDatosException("Ha habido un error al cerrar la conexión a la base de datos", e);
 		}
-		throw new AccesoDatosException("no se lo que devuelve por modificar");
+		
 
 	}
 
@@ -151,10 +159,11 @@ public class ProductosDaoMySql implements Dao<Long, Producto> {
 
 		try (Connection con = getConnection()) {
 			try (CallableStatement cs = con.prepareCall(PRODUCTOS_BORRAR_ID)) {
-				
+
 				cs.setLong(1, objeto.getId());
 				cs.executeQuery();
-				
+				return objeto;
+
 			} catch (SQLException e) {
 				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_BORRAR_ID);
 			}
@@ -162,18 +171,20 @@ public class ProductosDaoMySql implements Dao<Long, Producto> {
 			throw new AccesoDatosException("Ha habido un error al cerrar la conexión a la base de datos", e);
 
 		}
-		throw new AccesoDatosException("no se lo que devuelve por borrar por objeto(id)");
-	
+		
+
 	}
 
 	@Override
-	public Producto deleteById(Long id) {
+	public Long deleteById(Long id) {
 		try (Connection con = getConnection()) {
 			try (CallableStatement cs = con.prepareCall(PRODUCTOS_BORRAR_ID)) {
-				
-				cs.setLong(1,id);
+
+				cs.setLong(1, id);
 				cs.executeQuery();
 				
+				return id;
+
 			} catch (SQLException e) {
 				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_BORRAR_ID);
 			}
@@ -181,7 +192,7 @@ public class ProductosDaoMySql implements Dao<Long, Producto> {
 			throw new AccesoDatosException("Ha habido un error al cerrar la conexión a la base de datos", e);
 
 		}
-		throw new AccesoDatosException("no se lo que devuelve por borrar por id");
+		
 	}
 
 }
