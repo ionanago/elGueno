@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.ipartek.formacion.tiendavirtual.modelos.Mensaje;
 import com.ipartek.formacion.tiendavirtual.modelos.Producto;
 import com.ipartek.formacion.tiendavirtual.servicios.ProductoServicio;
-import com.ipartek.formacion.tiendavirtual.servicios.ProductosServicioImpl;
 
 @WebServlet("/producto")
 public class ProductoServlet extends HttpServlet {

@@ -75,7 +75,7 @@ public class ProductosServicioImpl implements ProductoServicio {
 		try {
 		return dao.delete(producto);
 		} catch (AccesoDatosException e) {
-			throw new ServiciosException("Ha habido un error al eliminar", e);
+			throw new ServiciosException("Ha habido un error al eliminar por objeto", e);
 		}
 	}
 
@@ -84,7 +84,7 @@ public class ProductosServicioImpl implements ProductoServicio {
 		try {
 			return dao.deleteById(id);
 			} catch (AccesoDatosException e) {
-				throw new ServiciosException("Ha habido un error al eliminar", e);
+				throw new ServiciosException("Ha habido un error al eliminar por id", e);
 			}
 	}
 

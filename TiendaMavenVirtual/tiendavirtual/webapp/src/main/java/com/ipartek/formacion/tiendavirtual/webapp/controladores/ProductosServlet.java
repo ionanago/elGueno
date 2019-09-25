@@ -21,7 +21,8 @@ public class ProductosServlet extends HttpServlet {
 
 
 		try {
-			ProductoServicio servicio = (ProductoServicio) getServletContext().getAttribute("servicioProductos"); //ProductosServicioImpl.getInstancia();
+			ProductoServicio servicio = (ProductoServicio) getServletContext().getAttribute("servicioProductos"); 
+			//ProductosServicioImpl.getInstancia();
 			
 			request.setAttribute("productos", servicio.getAll());
 			
