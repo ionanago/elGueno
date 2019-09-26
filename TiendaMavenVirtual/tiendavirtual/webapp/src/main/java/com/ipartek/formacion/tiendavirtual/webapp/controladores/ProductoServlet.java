@@ -140,7 +140,8 @@ public class ProductoServlet extends HttpServlet {
 				request.setAttribute("mensaje", new Mensaje("danger", "Error al borrar el producto"));
 			}
 
-			request.getRequestDispatcher("/productos").forward(request, response);
+			//request.getRequestDispatcher("/productos").forward(request, response);
+			response.sendRedirect(request.getContextPath() + "/productos");
 
 			break;
 			
