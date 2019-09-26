@@ -24,6 +24,7 @@ public class ProductoServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		String id = request.getParameter("id");
+		
 		// Producto producto = null;
 
 		if (id != null && id != "") {
@@ -31,7 +32,9 @@ public class ProductoServlet extends HttpServlet {
 			long l = Long.parseLong(id);
 
 			// producto = ProductosServicioImpl.getInstancia().getById(l);
+			
 			ProductoServicio servicio = (ProductoServicio) getServletContext().getAttribute("servicioProductos");
+			
 			// ProductosServicioImpl.getInstancia();
 
 			request.setAttribute("producto", servicio.getById(l));
@@ -55,8 +58,10 @@ public class ProductoServlet extends HttpServlet {
 		}
 
 		if (op == null) {
+			
 			// request.getRequestDispatcher("/productos").forward(request, response);
 			response.sendRedirect(request.getContextPath() + "/productos");
+			
 			return;
 		}
 		switch (op) {
@@ -76,11 +81,13 @@ public class ProductoServlet extends HttpServlet {
 					producto = ((ProductoServicio) getServletContext().getAttribute("servicioProductos"))
 							.insert(producto);
 
-					// request.setAttribute("mensaje", new Mensaje("success", "Registro insertado correctamente con el id " + producto.getId()));
+					// request.setAttribute("mensaje", new Mensaje("success", "Registro insertado
+					// correctamente con el id " + producto.getId()));
 					// request.getRequestDispatcher("/productos").forward(request, response);
+					
 					getServletContext().setAttribute("mensaje",
 							new Mensaje("success", "Registro insertado correctamente con el id " + producto.getId()));
-					
+
 					response.sendRedirect(request.getContextPath() + "/productos");
 
 					return;
@@ -108,7 +115,8 @@ public class ProductoServlet extends HttpServlet {
 					producto = ((ProductoServicio) getServletContext().getAttribute("servicioProductos"))
 							.update(producto);
 
-					// request.setAttribute("mensaje",new Mensaje("success", "Registro modificado correctamente con el id " + producto.getId()));
+					// request.setAttribute("mensaje",new Mensaje("success", "Registro modificado
+					// correctamente con el id " + producto.getId()));
 					// request.getRequestDispatcher("/productos").forward(request, response);
 
 					getServletContext().setAttribute("mensaje",
@@ -132,6 +140,7 @@ public class ProductoServlet extends HttpServlet {
 			try {
 				ProductoServicio servicio = (ProductoServicio) getServletContext().getAttribute("servicioProductos");
 				servicio.delete(id);
+				
 				// request.setAttribute("mensaje",new Mensaje("success", "Registro borrado
 				// correctamente con el id " + id));
 				// request.getRequestDispatcher("/productos").forward(request, response);
