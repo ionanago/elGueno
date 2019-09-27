@@ -99,6 +99,7 @@ public class ProductoServlet extends HttpServlet {
 			}
 
 			request.getRequestDispatcher(PRODUCTO_JSP).forward(request, response);
+			
 			break;
 
 		case "modificar":
@@ -157,6 +158,7 @@ public class ProductoServlet extends HttpServlet {
 				response.sendRedirect(request.getContextPath() + "/productos");
 
 				return;
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 
@@ -167,6 +169,14 @@ public class ProductoServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/productos");
 
 			break;
+			
+		 default:
+			 getServletContext().setAttribute("mensaje",
+						new Mensaje("warning", "No dispongo de la opción: " + op));
+
+				response.sendRedirect(request.getContextPath() + "/productos");
+
+				return;
 
 		}
 	}

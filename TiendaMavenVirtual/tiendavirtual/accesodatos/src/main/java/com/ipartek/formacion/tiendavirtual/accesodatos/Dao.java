@@ -8,7 +8,7 @@ public interface Dao<PK, T> {
 	
 	T insert(T objeto);
 	T update(T objeto);
-	T update(T objeto, T objetoViejop);
+	T update(T objeto, T objetoViejo);
 	T delete(T objeto);
 	Long deleteById(PK id);
 }
