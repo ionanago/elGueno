@@ -107,10 +107,16 @@ public class ProductoServlet extends HttpServlet {
 				String nombre = request.getParameter("nombre");
 				String descripcion = request.getParameter("descripcion");
 				String precio = request.getParameter("precio");
-
+				
+				String nombreViejo = request.getParameter("nombreViejo");
+				String descripcionVieja = request.getParameter("descripcionVieja");
+				String precioViejo = request.getParameter("precioViejo");
+				
+				Producto productoViejo = new Producto(id, nombreViejo, descripcionVieja, precioViejo);
 				Producto producto = new Producto(id, nombre, descripcion, precio);
-				if (producto.isError()) {
+				if (producto.isError() || productoViejo.isError()) {
 					request.setAttribute("producto", producto);
+					
 				} else {
 					producto = ((ProductoServicio) getServletContext().getAttribute("servicioProductos"))
 							.update(producto);

@@ -8,6 +8,7 @@ public interface ProductoServicio {
 	
 	Producto insert(Producto producto);
 	Producto update(Producto producto);
+	Producto update(Producto producto,Producto productoViejo);
 	Producto delete(Producto producto);
 	Long delete(Long id);
 	

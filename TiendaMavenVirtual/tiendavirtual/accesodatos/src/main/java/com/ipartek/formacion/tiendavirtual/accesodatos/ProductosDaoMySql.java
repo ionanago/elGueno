@@ -16,6 +16,8 @@ public class ProductosDaoMySql implements Dao<Long, Producto> {
 	private static final String PRODUCTOS_MODIFY = "{ call productos_modify(?,?,?,?) }";
 	private static final String PRODUCTOS_POR_ID = "{ call productos_get_by_id(?) }";
 	private static final String PRODUCTOS_BORRAR_ID = "{ call productos_delete_by_id(?) }";
+	private static final String PRODUCTOS_BORRAR_OBJETO="{call productos_delete_by_object(?,?,?,?)}";
+	private static final String PRODUCTOS_MODIFY_VIEJO="{ call productos_modify_object(?,?,?,?,?,?,?) }";
 
 	public String url, user, password, driver;
 
@@ -153,19 +155,54 @@ public class ProductosDaoMySql implements Dao<Long, Producto> {
 		
 
 	}
+	
+	@Override
+	public Producto update(Producto objeto,Producto objetoViejo) {
+		try (Connection con = getConnection()) {
+			try (CallableStatement cs = con.prepareCall(PRODUCTOS_MODIFY_VIEJO)) {
+
+				cs.setLong(1, objeto.getId());
+				cs.setString(2, objeto.getNombre());
+				cs.setString(3, objeto.getDescripcion());
+				cs.setBigDecimal(4, objeto.getPrecio());
+				
+				cs.setString(5, objetoViejo.getNombre());
+				cs.setString(6, objetoViejo.getDescripcion());
+				cs.setBigDecimal(7, objetoViejo.getPrecio());
+				
+
+				cs.executeUpdate();
+				
+				return objeto;
+
+			} catch (SQLException e) {
+				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_MODIFY_VIEJO);
+			}
+		} catch (SQLException e) {
+			throw new AccesoDatosException("Ha habido un error al cerrar la conexión a la base de datos", e);
+		}
+		
+
+	}
 
 	@Override
 	public Producto delete(Producto objeto) {
 
 		try (Connection con = getConnection()) {
-			try (CallableStatement cs = con.prepareCall(PRODUCTOS_BORRAR_ID)) {
+			try (CallableStatement cs = con.prepareCall(PRODUCTOS_BORRAR_OBJETO)) {
+
 
 				cs.setLong(1, objeto.getId());
+				cs.setString(2, objeto.getNombre());
+				cs.setString(3, objeto.getDescripcion());
+				cs.setBigDecimal(4, objeto.getPrecio());
+
+				
 				cs.executeQuery();
 				return objeto;
 
 			} catch (SQLException e) {
-				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_BORRAR_ID);
+				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_BORRAR_OBJETO);
 			}
 		} catch (SQLException e) {
 			throw new AccesoDatosException("Ha habido un error al cerrar la conexión a la base de datos", e);

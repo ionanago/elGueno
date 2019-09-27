@@ -38,6 +38,10 @@
 		<button type="submit" class="btn btn-primary">${op}</button>
 		<input	type="hidden" name="op" value="${op}"/>
 		<input type="hidden" name="id" value="${producto.id}"/>
+		<input type="hidden" name="nombreViejo" value="${producto.nombre}"/>
+		<input type="hidden" name="descripcionVieja" value="${producto.descripcion}"/>
+		<input type="hidden" name="precioViejo" value="${producto.precio}"/>
+		
 		
 		
 		

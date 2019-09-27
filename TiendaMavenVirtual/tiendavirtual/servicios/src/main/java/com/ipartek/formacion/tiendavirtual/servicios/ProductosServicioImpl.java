@@ -69,6 +69,13 @@ public class ProductosServicioImpl implements ProductoServicio {
 			throw new ServiciosException("Ha habido un error al modificar", e);
 		}
 	}
+	public Producto update(Producto producto, Producto producViejo) {
+		try {
+		return dao.update(producto, producViejo);
+		} catch (AccesoDatosException e) {
+			throw new ServiciosException("Ha habido un error al modificar", e);
+		}
+	}
 
 	@Override
 	public Producto delete(Producto producto) {
