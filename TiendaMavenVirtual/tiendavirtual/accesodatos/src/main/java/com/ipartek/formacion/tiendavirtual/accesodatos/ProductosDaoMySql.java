@@ -91,7 +91,7 @@ public class ProductosDaoMySql implements Dao<Long, Producto> {
 
 				Producto producto = null;
 
-				while (rs.next()) {
+				if (rs.next()) {
 					String nombre = rs.getString("nombre");
 					String descripcion = rs.getString("descripcion");
 					BigDecimal precio = rs.getBigDecimal("precio");
@@ -170,8 +170,11 @@ public class ProductosDaoMySql implements Dao<Long, Producto> {
 				cs.setString(6, productoViejo.getDescripcion());
 				cs.setBigDecimal(7, productoViejo.getPrecio());
 				
-
-				cs.executeUpdate();
+				int num = cs.executeUpdate();
+				if(num == 0) {
+					throw new AccesoDatosException("El registro a modificar no es el mismo, error de concurrencia" );
+					
+				}
 				
 				return producto;
 
@@ -197,8 +200,11 @@ public class ProductosDaoMySql implements Dao<Long, Producto> {
 				cs.setString(3, producto.getDescripcion());
 				cs.setBigDecimal(4, producto.getPrecio());
 
-				
-				cs.executeQuery();
+				int num = cs.executeUpdate();
+				if(num == 0) {
+					throw new AccesoDatosException("El registro a borrar no es el mismo, error de concurrencia");
+					
+				}
 				return producto;
 
 			} catch (SQLException e) {

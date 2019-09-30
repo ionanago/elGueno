@@ -17,6 +17,8 @@ public class ProductoServlet extends HttpServlet {
 	private static final String PRODUCTO_JSP = "/WEB-INF/vistas/producto.jsp";
 
 	private static final long serialVersionUID = 1L;
+	long tiempo;
+	String variablo="";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -24,10 +26,11 @@ public class ProductoServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		String id = request.getParameter("id");
+		variablo = "jajajajaja";
 		
 		// Producto producto = null;
 
-		if (id != null && id != "") {
+		if (id != null && !id.equals("")) {
 
 			long l = Long.parseLong(id);
 
@@ -42,8 +45,10 @@ public class ProductoServlet extends HttpServlet {
 
 		// request.setAttribute("producto", producto);
 		request.setAttribute("op", id == null ? "alta" : "modificar");
-
+		
 		request.getRequestDispatcher(PRODUCTO_JSP).forward(request, response);
+		
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -53,9 +58,19 @@ public class ProductoServlet extends HttpServlet {
 		Long id = 0L;
 		String ids = request.getParameter("id");
 		String op = request.getParameter("op");
-		if (ids != null && ids != "") {
+		
+		 
+		
+		
+		
+		if (ids != null && !ids.equals("")) {
 			id = Long.parseLong(ids);
 		}
+//		System.out.println(tiempo);
+//		System.out.println(System.currentTimeMillis());
+		
+		
+		
 
 		if (op == null) {
 			
@@ -67,6 +82,12 @@ public class ProductoServlet extends HttpServlet {
 		switch (op) {
 
 		case "alta":
+			if(variablo.equals("")) {
+				 request.setAttribute("mensaje", new Mensaje("warning", "¿Cómor? quietorr, te da cuén, Cobarderr"));
+				 request.getRequestDispatcher("/productos").forward(request, response);
+				return;
+			}
+			tiempo = System.currentTimeMillis();
 
 			try {
 				String nombre = request.getParameter("nombre");
@@ -81,14 +102,16 @@ public class ProductoServlet extends HttpServlet {
 					producto = ((ProductoServicio) getServletContext().getAttribute("servicioProductos"))
 							.insert(producto);
 
-					// request.setAttribute("mensaje", new Mensaje("success", "Registro insertado
-					// correctamente con el id " + producto.getId()));
-					// request.getRequestDispatcher("/productos").forward(request, response);
+					 request.setAttribute("mensaje", new Mensaje("success", "Registro insertado correctamente con el id " + producto.getId()));
+					 request.getRequestDispatcher("/productos").forward(request, response);
 					
-					getServletContext().setAttribute("mensaje",
-							new Mensaje("success", "Registro insertado correctamente con el id " + producto.getId()));
-
-					response.sendRedirect(request.getContextPath() + "/productos");
+					 
+					 tiempo = System.currentTimeMillis();
+					 variablo ="";
+//					request.getSession().setAttribute("mensaje",
+//							new Mensaje("success", "Registro insertado correctamente con el id " + producto.getId()));
+//
+//					response.sendRedirect(request.getContextPath() + "/productos");
 
 					return;
 				}
@@ -120,15 +143,14 @@ public class ProductoServlet extends HttpServlet {
 					
 				} else {
 					producto = ((ProductoServicio) getServletContext().getAttribute("servicioProductos"))
-							.update(producto);
+							.update(producto,productoViejo);
 
-					// request.setAttribute("mensaje",new Mensaje("success", "Registro modificado
-					// correctamente con el id " + producto.getId()));
-					// request.getRequestDispatcher("/productos").forward(request, response);
+					 request.setAttribute("mensaje",new Mensaje("success", "Registro modificado correctamente con el id " + producto.getId()));
+					 request.getRequestDispatcher("/productos").forward(request, response);
 
-					getServletContext().setAttribute("mensaje",
-							new Mensaje("success", "Registro modificado correctamente con el id " + producto.getId()));
-					response.sendRedirect(request.getContextPath() + "/productos");
+//					getServletContext().setAttribute("mensaje",
+//							new Mensaje("success", "Registro modificado correctamente con el id " + producto.getId()));
+//					response.sendRedirect(request.getContextPath() + "/productos");
 
 					return;
 				}
@@ -145,17 +167,26 @@ public class ProductoServlet extends HttpServlet {
 		case "borrar":
 
 			try {
-				ProductoServicio servicio = (ProductoServicio) getServletContext().getAttribute("servicioProductos");
-				servicio.delete(id);
 				
-				// request.setAttribute("mensaje",new Mensaje("success", "Registro borrado
-				// correctamente con el id " + id));
-				// request.getRequestDispatcher("/productos").forward(request, response);
+				
+				
+				//servicio.delete(id); borrar por id
+				//Producto producto = servicio.getById(id); 
+				String nombreBorrar = request.getParameter("nombreBorrar");
+				String descripcionBorrar = request.getParameter("descripcionBorrar");
+				String precioBorrar = request.getParameter("precioBorrar");
+				
+				Producto producto = new Producto(id,nombreBorrar,descripcionBorrar,precioBorrar);//borrar por objeto
+				ProductoServicio servicio = (ProductoServicio) getServletContext().getAttribute("servicioProductos");
+				servicio.delete(producto);
+				
+				 request.setAttribute("mensaje",new Mensaje("success", "Registro borrado correctamente con el id " + id));
+				 request.getRequestDispatcher("/productos").forward(request, response);
 
-				getServletContext().setAttribute("mensaje",
-						new Mensaje("success", "Registro borrado correctamente con el id " + id));
-
-				response.sendRedirect(request.getContextPath() + "/productos");
+//				getServletContext().setAttribute("mensaje",
+//						new Mensaje("success", "Registro borrado correctamente con el id " + id));
+//
+//				response.sendRedirect(request.getContextPath() + "/productos");
 
 				return;
 				
@@ -165,16 +196,17 @@ public class ProductoServlet extends HttpServlet {
 				request.setAttribute("mensaje", new Mensaje("danger", "Error al borrar el producto"));
 			}
 
-			// request.getRequestDispatcher("/productos").forward(request, response);
-			response.sendRedirect(request.getContextPath() + "/productos");
+			 request.getRequestDispatcher("/productos").forward(request, response);
+			//response.sendRedirect(request.getContextPath() + "/productos");
 
 			break;
 			
 		 default:
-			 getServletContext().setAttribute("mensaje",
+			 request.setAttribute("mensaje",
 						new Mensaje("warning", "No dispongo de la opción: " + op));
 
-				response.sendRedirect(request.getContextPath() + "/productos");
+				//response.sendRedirect(request.getContextPath() + "/productos");
+				request.getRequestDispatcher("/productos").forward(request, response);
 
 				return;
 

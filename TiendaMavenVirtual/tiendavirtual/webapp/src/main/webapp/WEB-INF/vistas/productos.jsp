@@ -25,6 +25,9 @@
 						<button class="btn btn-danger">Borrar</button>
 						<input type="hidden" name="id" value="${p.id}" />
 						<input type="hidden" name="op" value="borrar" />
+						<input type="hidden" name="nombreBorrar" value="${p.nombre}"/>
+						<input type="hidden" name="descripcionBorrar" value="${p.descripcion}"/>
+						<input type="hidden" name="precioBorrar" value="${p.precio}"/>
 					</form>
 				</td>
 			</tr>

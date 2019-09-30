@@ -21,6 +21,7 @@ public class ProductosServlet extends HttpServlet {
 
 
 		try {
+			
 			ProductoServicio servicio = (ProductoServicio) getServletContext().getAttribute("servicioProductos"); 
 			//ProductosServicioImpl.getInstancia();
 			
