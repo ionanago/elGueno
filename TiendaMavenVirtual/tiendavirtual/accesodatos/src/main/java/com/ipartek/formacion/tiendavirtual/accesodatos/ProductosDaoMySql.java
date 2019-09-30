@@ -133,18 +133,18 @@ public class ProductosDaoMySql implements Dao<Long, Producto> {
 	}
 
 	@Override
-	public Producto update(Producto objeto) {
+	public Producto update(Producto producto) {
 		try (Connection con = getConnection()) {
 			try (CallableStatement cs = con.prepareCall(PRODUCTOS_MODIFY)) {
 
-				cs.setLong(1, objeto.getId());
-				cs.setString(2, objeto.getNombre());
-				cs.setString(3, objeto.getDescripcion());
-				cs.setBigDecimal(4, objeto.getPrecio());
+				cs.setLong(1, producto.getId());
+				cs.setString(2, producto.getNombre());
+				cs.setString(3, producto.getDescripcion());
+				cs.setBigDecimal(4, producto.getPrecio());
 
 				cs.executeUpdate();
 				
-				return objeto;
+				return producto;
 
 			} catch (SQLException e) {
 				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_MODIFY);
@@ -157,23 +157,23 @@ public class ProductosDaoMySql implements Dao<Long, Producto> {
 	}
 	
 	@Override
-	public Producto update(Producto objeto,Producto objetoViejo) {
+	public Producto update(Producto producto,Producto productoViejo) {
 		try (Connection con = getConnection()) {
 			try (CallableStatement cs = con.prepareCall(PRODUCTOS_MODIFY_VIEJO)) {
 
-				cs.setLong(1, objeto.getId());
-				cs.setString(2, objeto.getNombre());
-				cs.setString(3, objeto.getDescripcion());
-				cs.setBigDecimal(4, objeto.getPrecio());
+				cs.setLong(1, producto.getId());
+				cs.setString(2, producto.getNombre());
+				cs.setString(3, producto.getDescripcion());
+				cs.setBigDecimal(4, producto.getPrecio());
 				
-				cs.setString(5, objetoViejo.getNombre());
-				cs.setString(6, objetoViejo.getDescripcion());
-				cs.setBigDecimal(7, objetoViejo.getPrecio());
+				cs.setString(5, productoViejo.getNombre());
+				cs.setString(6, productoViejo.getDescripcion());
+				cs.setBigDecimal(7, productoViejo.getPrecio());
 				
 
 				cs.executeUpdate();
 				
-				return objeto;
+				return producto;
 
 			} catch (SQLException e) {
 				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_MODIFY_VIEJO);
@@ -186,20 +186,20 @@ public class ProductosDaoMySql implements Dao<Long, Producto> {
 	}
 
 	@Override
-	public Producto delete(Producto objeto) {
+	public Producto delete(Producto producto) {
 
 		try (Connection con = getConnection()) {
 			try (CallableStatement cs = con.prepareCall(PRODUCTOS_BORRAR_OBJETO)) {
 
 
-				cs.setLong(1, objeto.getId());
-				cs.setString(2, objeto.getNombre());
-				cs.setString(3, objeto.getDescripcion());
-				cs.setBigDecimal(4, objeto.getPrecio());
+				cs.setLong(1, producto.getId());
+				cs.setString(2, producto.getNombre());
+				cs.setString(3, producto.getDescripcion());
+				cs.setBigDecimal(4, producto.getPrecio());
 
 				
 				cs.executeQuery();
-				return objeto;
+				return producto;
 
 			} catch (SQLException e) {
 				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_BORRAR_OBJETO);
