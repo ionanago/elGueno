@@ -83,7 +83,7 @@ public class ProductoServlet extends HttpServlet {
 
 		case "alta":
 			if(theJoker.equals("")) {
-				 request.setAttribute("mensaje", new Mensaje("warning", "¿Cómor? quietorr, te da cuén, Cobarderr"));
+				 request.setAttribute("mensaje", new Mensaje("warning", "Refrescar es peligroso. Encuentro el pasado un lugar inquietante y ansioso"));
 				 request.getRequestDispatcher("/productos").forward(request, response);
 				return;
 			}
@@ -126,6 +126,11 @@ public class ProductoServlet extends HttpServlet {
 			break;
 
 		case "modificar":
+			if(theJoker.equals("")) {
+				 request.setAttribute("mensaje", new Mensaje("warning", "Refrescar es peligroso. Encuentro el pasado un lugar inquietante y ansioso"));
+				 request.getRequestDispatcher("/productos").forward(request, response);
+				return;
+			}
 
 			try {
 				String nombre = request.getParameter("nombre");
@@ -151,7 +156,7 @@ public class ProductoServlet extends HttpServlet {
 //					getServletContext().setAttribute("mensaje",
 //							new Mensaje("success", "Registro modificado correctamente con el id " + producto.getId()));
 //					response.sendRedirect(request.getContextPath() + "/productos");
-
+					 theJoker ="";
 					return;
 				}
 			} catch (Exception e) {
