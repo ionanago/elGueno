@@ -18,7 +18,7 @@ public class ProductoServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	long tiempo;
-	String variablo="";
+	String theJoker="";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -26,7 +26,7 @@ public class ProductoServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		String id = request.getParameter("id");
-		variablo = "jajajajaja";
+		theJoker = "jajajajaja";
 		
 		// Producto producto = null;
 
@@ -82,7 +82,7 @@ public class ProductoServlet extends HttpServlet {
 		switch (op) {
 
 		case "alta":
-			if(variablo.equals("")) {
+			if(theJoker.equals("")) {
 				 request.setAttribute("mensaje", new Mensaje("warning", "¿Cómor? quietorr, te da cuén, Cobarderr"));
 				 request.getRequestDispatcher("/productos").forward(request, response);
 				return;
@@ -107,7 +107,7 @@ public class ProductoServlet extends HttpServlet {
 					
 					 
 					 tiempo = System.currentTimeMillis();
-					 variablo ="";
+					 theJoker ="";
 //					request.getSession().setAttribute("mensaje",
 //							new Mensaje("success", "Registro insertado correctamente con el id " + producto.getId()));
 //
