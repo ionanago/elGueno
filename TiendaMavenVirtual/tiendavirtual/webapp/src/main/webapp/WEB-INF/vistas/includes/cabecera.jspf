@@ -43,4 +43,4 @@
 			</button>
 		</div>
 	</c:if>
-	<main class="container"> <!-- Fin de cabecera -->
+	<main class="container-fluid"> <!-- Fin de cabecera -->

@@ -3,3 +3,7 @@
 h1 {
 	display: none;
 }
+.carrito{
+	border: light-grey thin;
+	border-radius: 0.25em;
+}
