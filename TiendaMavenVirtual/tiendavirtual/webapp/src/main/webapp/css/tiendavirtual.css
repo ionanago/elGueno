@@ -6,4 +6,5 @@ h1 {
 .carrito{
 	border: light-grey thin;
 	border-radius: 0.25em;
+	float:rigth;
 }
