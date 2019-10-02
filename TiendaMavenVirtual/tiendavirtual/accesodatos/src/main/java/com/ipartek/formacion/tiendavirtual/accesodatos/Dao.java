@@ -1,6 +1,6 @@
 package com.ipartek.formacion.tiendavirtual.accesodatos;
 
-
+import com.ipartek.formacion.tiendavirtual.modelos.Carrito;
 
 public interface Dao<PK, T> {
 	Iterable<T> getAll();
@@ -11,4 +11,5 @@ public interface Dao<PK, T> {
 	T update(T objeto, T objetoViejo);
 	T delete(T objeto);
 	Long deleteById(PK id);
+	
 }

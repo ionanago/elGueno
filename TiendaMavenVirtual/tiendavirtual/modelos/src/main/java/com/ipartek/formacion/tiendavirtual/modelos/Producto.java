@@ -8,6 +8,7 @@ public class Producto {
 	private Long id;
 	private String nombre, descripcion;
 	private BigDecimal precio;
+	private int cantidad;
 
 	private boolean error = false;
 	private String validezNombre = "", validezDescripcion = "", validezPrecio = "";
@@ -32,6 +33,13 @@ public class Producto {
 	}
 
 	public Producto() {
+	}
+
+	public Producto(Long id, String nombre, BigDecimal precio, int cantidad) {
+		setId(id);
+		setNombre(nombre);
+		setPrecio(precio);
+		setCantidad(cantidad);
 	}
 
 	public Long getId() {
@@ -106,6 +114,14 @@ public class Producto {
 		} catch (NumberFormatException e) {
 			setErrorPrecio("El precio debe ser un número con máximo de dos decimales");
 		}
+	}
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
 	}
 
 	public boolean isError() {

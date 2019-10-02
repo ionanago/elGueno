@@ -48,12 +48,13 @@
 	</table>
 </div>
 <aside class="col-2 carrito">
+<P> CARRITO DE COMPRA</P>
 	<c:forEach items="${carritos}" var="c">
 		<div>
-			<span>${c.nombre}</span> <span>${c.precio}</span>
+			<span>${c.producto} </span> <span>${c.precio} </span><span>x</span><span>${c.cantidad}</span>
 			<form style="display: inline" method="post" action="carrito">
 				<button class="btn btn-danger">X</button>
-				<input type="hidden" name="idCart" value="${c.id}" /> 
+				<%-- <input type="hidden" name="idCart" value="${}" /> --%>
 			</form>
 		</div>
 	</c:forEach>
