@@ -4,6 +4,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
+import com.ipartek.formacion.tiendavirtual.servicios.CarritoServicioImpl;
 import com.ipartek.formacion.tiendavirtual.servicios.ProductosServicioImpl;
 
 @WebListener
@@ -13,6 +14,8 @@ public class InicioAplicacionListener implements ServletContextListener {
     	String rutaWebApp = sce.getServletContext().getRealPath("/");
 		String rutaConfiguracion = rutaWebApp + "WEB-INF\\configuracion.properties";
     	sce.getServletContext().setAttribute("servicioProductos", ProductosServicioImpl.crearInstancia(rutaConfiguracion));
+    	sce.getServletContext().setAttribute("servicioCarrito", CarritoServicioImpl.crearInstancia(rutaConfiguracion));
+    	
     }
 
     public void contextDestroyed(ServletContextEvent sce)  {

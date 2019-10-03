@@ -14,11 +14,13 @@
 <link href="css/bootstrap.min.css" rel="stylesheet" />
 <link href="css/fontawesome-all.min.css" rel="stylesheet" />
 
-<link href="css/tiendavirtual.css" rel="stylesheet" />
+
 
 <script src="js/jquery-3.4.1.min.js"></script>
 <script src="js/popper.js"></script>
 <script src="js/bootstrap.min.js"></script>
+
+<link href="css/tiendavirtual.css" rel="stylesheet" />
 
 </head>
 <body>

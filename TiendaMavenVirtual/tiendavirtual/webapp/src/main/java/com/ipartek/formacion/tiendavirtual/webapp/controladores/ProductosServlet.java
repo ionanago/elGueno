@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ipartek.formacion.tiendavirtual.modelos.Carrito;
 import com.ipartek.formacion.tiendavirtual.modelos.Mensaje;
 import com.ipartek.formacion.tiendavirtual.servicios.CarritoServicio;
 import com.ipartek.formacion.tiendavirtual.servicios.ProductoServicio;
@@ -24,14 +25,22 @@ public class ProductosServlet extends HttpServlet {
 		try {
 			
 			ProductoServicio servicio = (ProductoServicio) getServletContext().getAttribute("servicioProductos"); 
-			CarritoServicio servicioC = (CarritoServicio) getServletContext().getAttribute("servicioCarrito"); 
-			Long uno= Long.parseLong("1");
-			
-			//ProductosServicioImpl.getInstancia();
+			try {
+				CarritoServicio servicioC = (CarritoServicio) getServletContext().getAttribute("servicioCarrito"); 
+				Long uno= Long.parseLong("1");
+				Carrito productos =servicioC.getCarrito(uno);
+				
+				
+				request.setAttribute("carrito",productos.getProductos() );
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				request.setAttribute("mensaje", new Mensaje("danger", "carrito doesn´t work!!"));
+			}
 			
 			request.setAttribute("productos", servicio.getAll());
-			request.setAttribute("carrito", servicioC.getCarrito(uno));
 			
+			//ProductosServicioImpl.getInstancia();
 			//request.setAttribute("mensaje",	new Mensaje("info", "Se ha cargado la lista de productos"));
 		} catch (Exception e) {
 			e.printStackTrace();

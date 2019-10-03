@@ -4,4 +4,13 @@
 <fullyQualifiedTypeName name="java.sql.SQLException"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.lang.Iterable"/>
+<fullyQualifiedTypeName name="java.math.BigDecimal"/>
+<fullyQualifiedTypeName name="com.ipartek.formacion.tiendavirtual.servicios.CarritoServivio"/>
+<fullyQualifiedTypeName name="com.ipartek.formacion.tiendavirtual.accesodatos.Dao"/>
+<fullyQualifiedTypeName name="com.ipartek.formacion.tiendavirtual.accesodatos.CarritoDaoMySql"/>
+<fullyQualifiedTypeName name="com.ipartek.formacion.tiendavirtual.servicios.CarritoServicio"/>
+<fullyQualifiedTypeName name="com.ipartek.formacion.tiendavirtual.modelos.Producto"/>
+<fullyQualifiedTypeName name="com.ipartek.formacion.tiendavirtual.servicios.CarritoServicioImpl"/>
+<fullyQualifiedTypeName name="com.ipartek.formacion.tiendavirtual.modelos.Carrito"/>
 </qualifiedTypeNameHistroy>

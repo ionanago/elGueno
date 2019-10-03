@@ -3,8 +3,10 @@
 h1 {
 	display: none;
 }
-.carrito{
-	border: light-grey thin;
-	border-radius: 0.25em;
-	float:rigth;
+
+.C_P{
+	border-top: lightgray thin solid !important;
+	border-bottom: lightgray thin solid !important;
+    margin-bottom: 0.5em !important;
+    padding: 0.5em !important;
 }

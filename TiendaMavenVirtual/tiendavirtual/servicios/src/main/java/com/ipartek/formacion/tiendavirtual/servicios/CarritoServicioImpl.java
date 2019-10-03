@@ -10,7 +10,7 @@ import com.ipartek.formacion.tiendavirtual.modelos.Producto;
 public class CarritoServicioImpl implements CarritoServicio{
 	private String configuracion;
 	private FabricaDao fabrica;
-	private Dao<Long, Producto> dao;
+	private Dao<Long, Carrito> dao;
 	
 	public String getConfiguracion() {
 		return configuracion;
@@ -33,7 +33,7 @@ public class CarritoServicioImpl implements CarritoServicio{
 		try {
 			this.configuracion = configuracion;
 			this.fabrica = FabricaDao.crearInstancia(configuracion);
-			this.dao = fabrica.getDaoProducto();
+			this.dao = fabrica.getDaoCarrito();
 		} catch (AccesoDatosException e) {
 			throw new ServiciosException("Error al crear el dao", e);
 		}
@@ -42,9 +42,9 @@ public class CarritoServicioImpl implements CarritoServicio{
 	@Override
 	public Carrito getCarrito(Long idu) {
 		try {
-			return CarritoDaoMySql.getInstancia().getCarrito(idu);
+			return dao.getCarrito(idu);
 		} catch (AccesoDatosException e) {
-			throw new ServiciosException("Ha habido un error al pedir el listado", e);}
+			throw new ServiciosException("Ha habido un error al pedir el carro", e);}
 			
 		
 	}

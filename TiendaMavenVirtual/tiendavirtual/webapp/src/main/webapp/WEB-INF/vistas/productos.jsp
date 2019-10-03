@@ -48,23 +48,19 @@
 	</table>
 </div>
 <aside class="col-2 carrito">
-<P> CARRITO DE COMPRA</P>
-	<c:forEach items="${carritos}" var="c">
-		<div>
-			<span>${c.producto} </span> <span>${c.precio} </span><span>x</span><span>${c.cantidad}</span>
+<h5> CARRITO DE COMPRA</h5>
+	<c:forEach items="${carrito}" var="c">
+		<div class="C_P">
+		<p>Producto: <span>${c.nombre}</span> </p>
+		<p>Precio: <span><fmt:formatNumber value="${c.precio}" type="currency" /> </span></p>
+		<p>Cantidad: <span>${c.cantidad}</span></p>
 			<form style="display: inline" method="post" action="carrito">
 				<button class="btn btn-danger">X</button>
 				<%-- <input type="hidden" name="idCart" value="${}" /> --%>
 			</form>
 		</div>
 	</c:forEach>
-	<div>
-			<span>pepe</span> <span>pepe</span>
-			<form style="display: inline" method="post" action="carrito">
-				<button class="btn btn-danger">X</button>
-				<input type="hidden" name="idCart" value="${c.id}" /> 
-			</form>
-		</div>
+	
 </aside>
 
 <%--  <a href="producto" class="btn btn-primary">Añadir producto</a>--%>

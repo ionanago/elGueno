@@ -13,9 +13,9 @@ import java.util.ArrayList;
 
 public class CarritoDaoMySql implements Dao<Long, Carrito> {
 	
-	private static final String CARRITO_GETBY_USUARIO = "{ call ccarrito_getBy_user(?) }";
-	private static final String CARRITO_INSERT = "{ call tiendavirtual.carrito_insert(?,?,?,?) }";
-	private static final String CARRITO_TOTAL = "{ call tiendavirtual.carrito_total_usuario(?, ?) }";
+	private static final String CARRITO_GETBY_USUARIO = "{ call tiendavirtual.carrito_getBy_user(1) }";
+	private static final String CARRITO_INSERT = "{ call carrito_insert(?,?,?,?) }";
+	private static final String CARRITO_TOTAL = "{ call carrito_total_usuario(?, ?) }";
 	private static final String CARRITO_BORRAR_U_P="{call carrito_borrar_usuario_producto(?, ?)}";
 	public String url, user, password, driver;
 
@@ -56,7 +56,7 @@ public class CarritoDaoMySql implements Dao<Long, Carrito> {
 	public Carrito getCarrito(Long idu) {
 		try (Connection con = getConnection()) {
 			try (CallableStatement cs = con.prepareCall(CARRITO_GETBY_USUARIO)) {
-				cs.setLong(1, idu);
+				//cs.setLong(1, idu);
 				
 				ResultSet rs = cs.executeQuery();
 
@@ -65,10 +65,10 @@ public class CarritoDaoMySql implements Dao<Long, Carrito> {
 				
 
 				while (rs.next()) {
-				String producto_nombre = cs.getString("producto");
-				Long producto_id = cs.getLong("producto_id");
-				BigDecimal producto_precio = cs.getBigDecimal("precio");
-				int producto_cantidad = cs.getInt("cantidad");
+ 				String producto_nombre = rs.getString("producto");
+				Long producto_id = rs.getLong("producto_id");
+				BigDecimal producto_precio = rs.getBigDecimal("precio");
+				int producto_cantidad = rs.getInt("cantidad");
 				Producto producto = new Producto (producto_id,producto_nombre,producto_precio,producto_cantidad);
 					
 				productos.add(producto);		
@@ -78,7 +78,7 @@ public class CarritoDaoMySql implements Dao<Long, Carrito> {
 				return  carrito;
 
 			} catch (SQLException e) {
-				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + CARRITO_GETBY_USUARIO);
+				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + CARRITO_GETBY_USUARIO,e);
 			}
 		} catch (SQLException e) {
 			throw new AccesoDatosException("Ha habido un error al cerrar la conexión a la base de datos", e);

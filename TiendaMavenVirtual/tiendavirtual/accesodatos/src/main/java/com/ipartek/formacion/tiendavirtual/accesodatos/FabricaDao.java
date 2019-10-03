@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import com.ipartek.formacion.tiendavirtual.modelos.Carrito;
 import com.ipartek.formacion.tiendavirtual.modelos.Producto;
 
 public class FabricaDao {
@@ -57,5 +58,15 @@ public class FabricaDao {
 			throw new AccesoDatosException("No dispongo del motor " + motor);
 		}
 	}
+	public Dao<Long, Carrito> getDaoCarrito() {
+		switch (motor) {
+		case "mysql":
+			return CarritoDaoMySql.crearInstancia(driver, url, user, password);
+		// case "oracle": return ProductosDaoOracle.crearInstancia(....);
+		default:
+			throw new AccesoDatosException("No dispongo del motor " + motor);
+		}
+	}
+	
 
 }

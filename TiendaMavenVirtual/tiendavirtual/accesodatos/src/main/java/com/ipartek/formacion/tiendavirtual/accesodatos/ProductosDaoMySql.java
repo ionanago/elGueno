@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.ipartek.formacion.tiendavirtual.modelos.Carrito;
 import com.ipartek.formacion.tiendavirtual.modelos.Producto;
 
 public class ProductosDaoMySql implements Dao<Long, Producto> {
@@ -236,6 +237,12 @@ public class ProductosDaoMySql implements Dao<Long, Producto> {
 
 		}
 		
+	}
+
+	@Override
+	public Carrito getCarrito(Long idu) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

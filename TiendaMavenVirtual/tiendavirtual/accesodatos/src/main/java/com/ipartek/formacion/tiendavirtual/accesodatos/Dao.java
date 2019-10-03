@@ -11,5 +11,6 @@ public interface Dao<PK, T> {
 	T update(T objeto, T objetoViejo);
 	T delete(T objeto);
 	Long deleteById(PK id);
+	Carrito getCarrito(Long idu);
 	
 }
