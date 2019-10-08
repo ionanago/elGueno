@@ -57,7 +57,14 @@ public class ControladorRest {
 	
 	@RequestMapping(method = RequestMethod.DELETE, path = "/api/personas/{id}")
 	public Persona deleteById(@PathVariable("id") Long id) {
-		return personas.remove(id);
+		Persona persona = null;
+		try {
+			  persona = personas.remove(id);
+		} catch (ServerErrorException e) {
+			
+			e.printStackTrace();
+		}
+		return persona;
 	}
 	
 }

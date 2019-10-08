@@ -22,4 +22,5 @@ public class ControladorGlobalHttpStatusCodes extends ResponseEntityExceptionHan
         return handleExceptionInternal(ex, bodyOfResponse, 
           headers, HttpStatus.NOT_FOUND, request);
 	}
+	
 }
