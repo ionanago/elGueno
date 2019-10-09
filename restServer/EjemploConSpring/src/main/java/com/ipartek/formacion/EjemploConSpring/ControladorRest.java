@@ -46,25 +46,34 @@ public class ControladorRest {
 		return persona;
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT, path = "/api/personas")
-	@ResponseStatus(HttpStatus.CREATED)
-	public Persona update(@RequestBody Persona persona) {
+	@RequestMapping(method = RequestMethod.PUT, path = "/api/personas/{id}")
+	@ResponseStatus(HttpStatus.OK)
+	public Persona update(@PathVariable("id") Long id, @RequestBody Persona persona ) {
 	
-		personas.put(persona.getId(), persona);
+		personas.put(id, persona);
 		
 		return persona;
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE, path = "/api/personas/{id}")
-	public Persona deleteById(@PathVariable("id") Long id) {
-		Persona persona = null;
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void deleteById(@PathVariable("id") Long id) {
+		
 		try {
-			  persona = personas.remove(id);
+			personas.remove(id);
 		} catch (ServerErrorException e) {
 			
 			e.printStackTrace();
 		}
-		return persona;
+		
 	}
+	@RequestMapping(method = RequestMethod.PATCH, path = "/api/personas/{id}")
+	@ResponseStatus(HttpStatus.OK)
+	public Persona update_patch(@PathVariable("id") Long id, @RequestBody Persona persona ){
+		
+		return persona;
+		
+	}
+	
 	
 }
