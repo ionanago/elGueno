@@ -14,14 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class ControladorRest {
 	private static TreeMap<Long, Persona> personas = new TreeMap<>();
 
-	static {
-		personas.put(1L, new Persona(1L, "Javier", "Lete García"));
-		personas.put(2L, new Persona(2L, "Pepe", "Pérez González"));
-	}
+//	static {
+//		personas.put(1L, new Persona(1L, "Javier", "Lete García"));
+//		personas.put(2L, new Persona(2L, "Pepe", "Pérez González"));
+//	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/api/personas")
 	public Iterable<Persona> getAll() {
-		return personas.values();
+		//return personas.values();
+		return PersonaMySqlJdbcTemplateRepository.obtenerTodos();
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/api/personas/{id}")
