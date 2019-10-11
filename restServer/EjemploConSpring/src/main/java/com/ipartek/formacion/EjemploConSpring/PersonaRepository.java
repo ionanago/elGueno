@@ -11,7 +11,7 @@ public interface PersonaRepository<T> extends CrudRepository<T,Persona> {
 
 	 List<Persona> findByApellido(String Apellido);
 
-		Persona findById(long id);
+		Persona getById(long id);
 		
 		
 }

@@ -5975,3 +5975,283 @@ java.lang.NullPointerException
 	at com.genuitec.eclipse.code.debug.migration.LaunchDebugMigration.migrateIfRequired(LaunchDebugMigration.java:23)
 	at com.genuitec.eclipse.code.debug.CodeDebugSessionHandler$InitializeConnection$1.run(CodeDebugSessionHandler.java:37)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SESSION 2019-10-11 12:15:50.274 -----------------------------------------------
+eclipse.buildId=4.13.0.I20190916-1045
+java.version=1.8.0_221
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.jface 2 0 2019-10-11 12:16:30.287
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2019-10-11 12:16:30.287
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@7bbd0006,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2fd05b15,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.egit.ui 2 0 2019-10-11 12:17:09.810
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\curso'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.ui.workbench 4 2 2019-10-11 12:17:12.208
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.ui.internal.editors.text.SharedTextColors.getColor(SharedTextColors.java:54)
+	at org.eclipse.ui.texteditor.SourceViewerDecorationSupport.getColor(SourceViewerDecorationSupport.java:642)
+	at org.eclipse.ui.texteditor.SourceViewerDecorationSupport.getColor(SourceViewerDecorationSupport.java:630)
+	at org.eclipse.ui.texteditor.SourceViewerDecorationSupport.handlePreferenceStoreChanged(SourceViewerDecorationSupport.java:591)
+	at org.eclipse.ui.texteditor.SourceViewerDecorationSupport$1.propertyChange(SourceViewerDecorationSupport.java:268)
+	at org.eclipse.ui.preferences.ScopedPreferenceStore$2.run(ScopedPreferenceStore.java:325)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.ui.preferences.ScopedPreferenceStore.firePropertyChangeEvent(ScopedPreferenceStore.java:322)
+	at org.eclipse.jface.preference.PreferenceConverter.setValue(PreferenceConverter.java:586)
+	at org.springframework.tooling.ls.eclipse.commons.LanguageServerCommonsActivator.updateMarkerAnnotationPreferences(LanguageServerCommonsActivator.java:90)
+	at org.springframework.tooling.ls.eclipse.commons.LanguageServerCommonsActivator.start(LanguageServerCommonsActivator.java:81)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$3.run(BundleContextImpl.java:842)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$3.run(BundleContextImpl.java:1)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.startActivator(BundleContextImpl.java:834)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:791)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.startWorker0(EquinoxBundle.java:1015)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.startWorker(EquinoxBundle.java:365)
+	at org.eclipse.osgi.container.Module.doStart(Module.java:603)
+	at org.eclipse.osgi.container.Module.start(Module.java:467)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:493)
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:117)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:571)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:330)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:398)
+	at org.eclipse.osgi.internal.loader.sources.SingleSourcePackage.loadClass(SingleSourcePackage.java:41)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:472)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:425)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:417)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:155)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at org.springframework.tooling.boot.ls.BootJavaPreferencesPage.manageCodeMiningPreferences(BootJavaPreferencesPage.java:39)
+	at org.springframework.tooling.boot.ls.BootLanguageServerPlugin.start(BootLanguageServerPlugin.java:54)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$3.run(BundleContextImpl.java:842)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$3.run(BundleContextImpl.java:1)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.startActivator(BundleContextImpl.java:834)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:791)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.startWorker0(EquinoxBundle.java:1015)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.startWorker(EquinoxBundle.java:365)
+	at org.eclipse.osgi.container.Module.doStart(Module.java:603)
+	at org.eclipse.osgi.container.Module.start(Module.java:467)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:493)
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:117)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:571)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:330)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:398)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:476)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:425)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:417)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:155)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.loadClass(EquinoxBundle.java:620)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:196)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:934)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:246)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.core.internal.content.ContentType.getDescriber(ContentType.java:293)
+	at org.eclipse.core.internal.content.ContentTypeCatalog.collectMatchingByContents(ContentTypeCatalog.java:220)
+	at org.eclipse.core.internal.content.ContentTypeCatalog.internalFindContentTypesFor(ContentTypeCatalog.java:440)
+	at org.eclipse.core.internal.content.ContentTypeCatalog.internalFindContentTypesFor(ContentTypeCatalog.java:501)
+	at org.eclipse.core.internal.content.ContentTypeCatalog.getDescriptionFor(ContentTypeCatalog.java:383)
+	at org.eclipse.core.internal.content.ContentTypeCatalog.getDescriptionFor(ContentTypeCatalog.java:397)
+	at org.eclipse.core.internal.content.ContentTypeMatcher.getDescriptionFor(ContentTypeMatcher.java:82)
+	at org.eclipse.core.internal.resources.ContentDescriptionManager.readDescription(ContentDescriptionManager.java:455)
+	at org.eclipse.core.internal.resources.ContentDescriptionManager.getDescriptionFor(ContentDescriptionManager.java:364)
+	at org.eclipse.core.internal.resources.File.getContentDescription(File.java:266)
+	at org.eclipse.jem.internal.util.emf.workbench.ProjectResourceSetImpl.createResource(ProjectResourceSetImpl.java:724)
+	at org.eclipse.wst.common.internal.emfworkbench.integration.ProjectResourceSetEditImpl.createResource(ProjectResourceSetEditImpl.java:49)
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.demandCreateResource(ResourceSetImpl.java:243)
+	at org.eclipse.jem.internal.util.emf.workbench.ProjectResourceSetImpl.getResource(ProjectResourceSetImpl.java:1053)
+	at org.eclipse.wst.common.internal.emfworkbench.WorkbenchResourceHelper.getOrCreateResource(WorkbenchResourceHelper.java:380)
+	at org.eclipse.wst.common.internal.emfworkbench.integration.EditModel.getResource(EditModel.java:685)
+	at org.eclipse.wst.common.componentcore.internal.ModuleStructuralModel.getPrimaryResource(ModuleStructuralModel.java:332)
+	at org.eclipse.wst.common.componentcore.internal.ModuleStructuralModel.prepareProjectModulesIfNecessary(ModuleStructuralModel.java:240)
+	at org.eclipse.wst.common.componentcore.internal.ModuleStructuralModel.getPrimaryRootObject(ModuleStructuralModel.java:119)
+	at org.eclipse.wst.common.componentcore.internal.StructureEdit.getComponentModelRoot(StructureEdit.java:471)
+	at org.eclipse.wst.common.componentcore.internal.StructureEdit.getWorkbenchModules(StructureEdit.java:506)
+	at org.eclipse.wst.common.componentcore.internal.StructureEdit.getComponent(StructureEdit.java:949)
+	at org.eclipse.wst.common.componentcore.internal.resources.VirtualComponent.createResource(VirtualComponent.java:124)
+	at org.eclipse.wst.common.componentcore.internal.resources.VirtualComponent.initializeResource(VirtualComponent.java:113)
+	at org.eclipse.wst.common.componentcore.internal.resources.VirtualComponent.<init>(VirtualComponent.java:148)
+	at org.eclipse.jst.j2ee.componentcore.J2EEModuleVirtualComponent.<init>(J2EEModuleVirtualComponent.java:92)
+	at org.eclipse.jst.j2ee.componentcore.J2EEModuleVirtualComponent.createComponent(J2EEModuleVirtualComponent.java:97)
+	at org.eclipse.wst.common.componentcore.internal.util.ComponentImplManager.createComponentSynchronously(ComponentImplManager.java:232)
+	at org.eclipse.wst.common.componentcore.internal.util.ComponentImplManager.createComponent(ComponentImplManager.java:215)
+	at org.eclipse.wst.common.componentcore.internal.util.ComponentImplManager.createComponent(ComponentImplManager.java:205)
+	at org.eclipse.wst.common.componentcore.ComponentCore.createComponent(ComponentCore.java:64)
+	at org.eclipse.wst.common.componentcore.internal.builder.DependencyGraphImpl$2$1.isStale(DependencyGraphImpl.java:959)
+	at org.eclipse.wst.common.componentcore.internal.builder.DependencyGraphImpl$2$1.run(DependencyGraphImpl.java:939)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.wst.common.componentcore.internal.builder.DependencyGraphImpl$2.run(DependencyGraphImpl.java:929)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:17:54.504
+!MESSAGE Entering DelegatingStreamConnectionProvider()
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:17:54.519
+!MESSAGE DelegatingStreamConnectionProvider classloader = org.eclipse.osgi.internal.loader.EquinoxClassLoader@6876ff8[org.springframework.tooling.boot.ls:1.11.0.201909171347(id=1190)]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:17:54.587
+!MESSAGE SpringBootLanguageServer exists!
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:17:56.356
+!MESSAGE Instantiating ReusableClasspathListenerHandler
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2019-10-11 12:17:57.103
+!MESSAGE Removing part descriptor with the 'code.google.restclient.eclipse.views.LaunchView' id and the 'RestClient Tool' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2019-10-11 12:17:58.577
+!MESSAGE Removing part descriptor with the 'code.satyagraha.gfm.viewer.views.GfmView' id and the 'GFM View' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2019-10-11 12:17:59.231
+!MESSAGE Removing part descriptor with the 'mirur.views.Painter' id and the 'Mirur Painter' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2019-10-11 12:17:59.319
+!MESSAGE Removing part descriptor with the 'mirur.views.Statistics' id and the 'Mirur Statistics' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2019-10-11 12:17:59.328
+!MESSAGE Removing part descriptor with the 'org.eclipse.angularjs.ui.views.AngularExplorerView' id and the 'Angular Explorer' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2019-10-11 12:17:59.329
+!MESSAGE Removing part descriptor with the 'tern.eclipse.ide.ui.views.TernOutlineView' id and the 'Tern Outline' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2019-10-11 12:17:59.386
+!MESSAGE Removing part descriptor with the 'winterwell.markdown.views.MarkdownPreview' id and the 'Markdown View' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2019-10-11 12:17:59.388
+!MESSAGE Removing part descriptor with the 'com.genuitec.eclipse.code.livechat.ui.views.LiveChatView' id and the 'Live Chat' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2019-10-11 12:17:59.390
+!MESSAGE Removing part descriptor with the 'com.genuitec.eclipse.code.ui.terminal.plus' id and the 'Terminal+' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2019-10-11 12:17:59.392
+!MESSAGE Removing part descriptor with the 'com.genuitec.eclipse.code.ui.welcome.view' id and the 'CodeMix' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2019-10-11 12:17:59.393
+!MESSAGE Removing part descriptor with the 'com.genuitec.eclipse.tutorial.view' id and the 'Tutorial' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:25.966
+!MESSAGE Boot LS startup time from start to initialized: 31319ms
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.038
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.GsqImihhisBatched = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.053
+!MESSAGE subscribing to classpath changes: sts4.classpath.GsqImihh isBatched = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.060
+!MESSAGE Setting up ClasspathListenerManager
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.065
+!MESSAGE subsribers = {sts4.classpath.GsqImihh=Send Classpath Notifications(981)}
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.066
+!MESSAGE Sending initial event for all projects ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.068
+!MESSAGE project accesodatos ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.069
+!MESSAGE project modelos ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.070
+!MESSAGE Preparing classpath changed notification accesodatos
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.071
+!MESSAGE project servicios ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.073
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.074
+!MESSAGE project webapp ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.077
+!MESSAGE project Servers ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.079
+!MESSAGE project Servers SKIPPED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.081
+!MESSAGE classpath=58 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.084
+!MESSAGE project tiendavirtual ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.088
+!MESSAGE buffering callback sts4.classpath.GsqImihh accesodatos false 58
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.091
+!MESSAGE project tiendavirtual SKIPPED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.098
+!MESSAGE Preparing classpath changed notification modelos
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.099
+!MESSAGE Sending initial event for all projects DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.100
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.101
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.GsqImihh => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.102
+!MESSAGE classpath=53 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.106
+!MESSAGE buffering callback sts4.classpath.GsqImihh modelos false 53
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.108
+!MESSAGE Preparing classpath changed notification servicios
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.110
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.112
+!MESSAGE classpath=60 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.115
+!MESSAGE buffering callback sts4.classpath.GsqImihh servicios false 60
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.115
+!MESSAGE Preparing classpath changed notification webapp
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.117
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.120
+!MESSAGE classpath=64 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.123
+!MESSAGE buffering callback sts4.classpath.GsqImihh webapp false 64
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.124
+!MESSAGE executing callback sts4.classpath.GsqImihh 4 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-11 12:18:26.184
+!MESSAGE executing callback sts4.classpath.GsqImihh SUCCESS [done]

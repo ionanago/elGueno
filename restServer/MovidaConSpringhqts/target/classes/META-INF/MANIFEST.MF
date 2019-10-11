@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: MovidaConSpringhqts
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Curso
+Implementation-Vendor-Id: com.ipartek.formacion
+Build-Jdk: 1.8.0_221
+Implementation-URL: http://www.example.com
+Created-By: Maven Integration for Eclipse
+

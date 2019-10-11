@@ -31,6 +31,19 @@ public class PersonaMySqlJdbcTemplateRepository implements PersonaRepository{
 			);
 		}
 	}
+	
+	public static List<Persona> obtenerUno(Long id) {
+		return jdbcTemplate.query("select * from Persona while id=?", new PresonaMapper());
+	}
+	
+	
+	
+	
+	@Override
+	public Persona getById(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
 	public Object save(Object entity) {
@@ -104,11 +117,9 @@ public class PersonaMySqlJdbcTemplateRepository implements PersonaRepository{
 		return null;
 	}
 
-	@Override
-	public Persona findById(long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+
+	
 
 	
 	}
