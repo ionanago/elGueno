@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.Id;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -30,53 +32,38 @@ public class PersonaMySqlJdbcTemplateRepository implements PersonaRepository{
 		}
 	}
 
-	
-	
-	
-	
-	
-	
-	
 	@Override
-	public Iterable<Long> findAll() {
-		
-		return null;
-	}
-	
-	
-	
-	
-	
-	
-	
-	@Override
-	public <S extends Long> S save(S entity) {
-		
-		return null;
-	}
-
-	@Override
-	public <S extends Long> Iterable<S> saveAll(Iterable<S> entities) {
-		
-		return null;
-	}
-
-	@Override
-	public Optional<Long> findById(Persona id) {
+	public Object save(Object entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean existsById(Persona id) {
+	public Iterable saveAll(Iterable entities) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Optional findById(Object id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean existsById(Object id) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	
+	@Override
+	public Iterable findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
-	public Iterable<Long> findAllById(Iterable<Persona> ids) {
+	public Iterable findAllById(Iterable ids) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -88,19 +75,19 @@ public class PersonaMySqlJdbcTemplateRepository implements PersonaRepository{
 	}
 
 	@Override
-	public void deleteById(Persona id) {
+	public void deleteById(Object id) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void delete(Long entity) {
+	public void delete(Object entity) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends Long> entities) {
+	public void deleteAll(Iterable entities) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -112,7 +99,7 @@ public class PersonaMySqlJdbcTemplateRepository implements PersonaRepository{
 	}
 
 	@Override
-	public List<Persona> findByApellido(String Apellido) {
+	public List findByApellido(String Apellido) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -122,5 +109,9 @@ public class PersonaMySqlJdbcTemplateRepository implements PersonaRepository{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 	
-}
+	}
+
+	
+	
