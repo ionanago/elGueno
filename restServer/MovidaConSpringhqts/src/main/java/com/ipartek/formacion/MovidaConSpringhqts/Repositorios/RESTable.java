@@ -7,5 +7,5 @@ public interface RESTable<T> {
 
 		public Persona getById(Long id);
 
-		List<Persona> obtenerTodos();
+		
 }

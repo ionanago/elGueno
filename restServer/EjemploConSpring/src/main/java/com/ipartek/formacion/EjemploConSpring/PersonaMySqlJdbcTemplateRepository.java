@@ -15,13 +15,12 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class PersonaMySqlJdbcTemplateRepository implements PersonaRepository{
+public class PersonaMySqlJdbcTemplateRepository implements PersonaRepository<Persona>{
 	@Autowired
 	private static JdbcTemplate jdbcTemplate;
 
 
-	
-	public static List<Persona> obtenerTodos() {
+	public static List<Persona> getAll() {
 		return jdbcTemplate.query("select * from Persona", new PresonaMapper());
 	}
 	
@@ -31,98 +30,79 @@ public class PersonaMySqlJdbcTemplateRepository implements PersonaRepository{
 			);
 		}
 	}
-	
-	public static List<Persona> obtenerUno(Long id) {
-		return jdbcTemplate.query("select * from Persona while id=?", new PresonaMapper());
-	}
-	
-	
-	
-	
-	@Override
 	public Persona getById(long id) {
+		return (Persona) jdbcTemplate.query("select * from Persona while id=?", new PresonaMapper());
+	}
+	
+	
+	
+	
+	
+	
+	
+	@Override
+	public <S extends Persona> S save(S entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
-	public Object save(Object entity) {
+	public <S extends Persona> Iterable<S> saveAll(Iterable<S> entities) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
-	public Iterable saveAll(Iterable entities) {
+	public Optional<Persona> findById(Persona id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
-	public Optional findById(Object id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean existsById(Object id) {
+	public boolean existsById(Persona id) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	@Override
-	public Iterable findAll() {
+	public Iterable<Persona> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
-	public Iterable findAllById(Iterable ids) {
+	public Iterable<Persona> findAllById(Iterable<Persona> ids) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public long count() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 	@Override
-	public void deleteById(Object id) {
+	public void deleteById(Persona id) {
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
-	public void delete(Object entity) {
+	public void delete(Persona entity) {
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
-	public void deleteAll(Iterable entities) {
+	public void deleteAll(Iterable<? extends Persona> entities) {
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
 	public void deleteAll() {
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
-	public List findByApellido(String Apellido) {
+	public List<Persona> findByApellido(String Apellido) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
+	
+	
 
-	
-
-	
-
-	
-	}
-
-	
-	
+}	

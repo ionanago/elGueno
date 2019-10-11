@@ -19,25 +19,23 @@ public class PersonaMySqlJdbcTemplateRepository implements RESTable<Persona> {
 	
 
 	@Override
-	public List<Persona> obtenerTodos() {
-		return jdbcTemplate.query("select * from personas", new PersonaMapper());
+	public List<Persona> getAll() {
+		return jdbcTemplate.query("select * from personas", new PersonasMapper());
 	}
 	
-	private static final class PersonaMapper implements RowMapper<Persona> {
+	private static final class PersonasMapper implements RowMapper<Persona> {
 		public Persona mapRow(ResultSet rs, int rowNum) throws SQLException {
 			return new Persona(rs.getLong("id"), rs.getString("nombre"),rs.getString("apellido"));
 		}
-
+		private static final class PersonaMapper implements RowMapper<Persona> {
+			public Persona mapRow(ResultSet rs, int rowNum) throws SQLException {
+				return new Persona(rs.getLong("id"), rs.getString("nombre"),rs.getString("apellido"));
+			}
 }
 
-	@Override
-	public List<Persona> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public Persona getById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.query("select * from personas where id=?", new PersonaMapper());
 	}}
