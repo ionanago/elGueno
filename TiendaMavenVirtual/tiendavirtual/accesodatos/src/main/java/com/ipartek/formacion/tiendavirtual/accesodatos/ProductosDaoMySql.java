@@ -76,7 +76,7 @@ public class ProductosDaoMySql implements Dao<Long, Producto> {
 				return productos;
 
 			} catch (SQLException e) {
-				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_GET_ALL);
+				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_GET_ALL,e);
 			}
 		} catch (SQLException e) {
 			throw new AccesoDatosException("Ha habido un error al cerrar la conexión a la base de datos", e);
@@ -126,7 +126,7 @@ public class ProductosDaoMySql implements Dao<Long, Producto> {
 				return producto;
 
 			} catch (SQLException e) {
-				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_INSERT);
+				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_INSERT,e);
 			}
 		} catch (SQLException e) {
 			throw new AccesoDatosException("Ha habido un error al cerrar la conexión a la base de datos", e);
@@ -148,7 +148,7 @@ public class ProductosDaoMySql implements Dao<Long, Producto> {
 				return producto;
 
 			} catch (SQLException e) {
-				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_MODIFY);
+				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_MODIFY,e);
 			}
 		} catch (SQLException e) {
 			throw new AccesoDatosException("Ha habido un error al cerrar la conexión a la base de datos", e);
@@ -173,14 +173,14 @@ public class ProductosDaoMySql implements Dao<Long, Producto> {
 				
 				int num = cs.executeUpdate();
 				if(num == 0) {
-					throw new AccesoDatosException("El registro a modificar no es el mismo, error de concurrencia" );
+					throw new AccesoDatosException("El registro a modificar no es el mismo, error de concurrencia");
 					
 				}
 				
 				return producto;
 
 			} catch (SQLException e) {
-				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_MODIFY_VIEJO);
+				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_MODIFY_VIEJO,e);
 			}
 		} catch (SQLException e) {
 			throw new AccesoDatosException("Ha habido un error al cerrar la conexión a la base de datos", e);
@@ -209,7 +209,7 @@ public class ProductosDaoMySql implements Dao<Long, Producto> {
 				return producto;
 
 			} catch (SQLException e) {
-				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_BORRAR_OBJETO);
+				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_BORRAR_OBJETO,e);
 			}
 		} catch (SQLException e) {
 			throw new AccesoDatosException("Ha habido un error al cerrar la conexión a la base de datos", e);
@@ -230,7 +230,7 @@ public class ProductosDaoMySql implements Dao<Long, Producto> {
 				return id;
 
 			} catch (SQLException e) {
-				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_BORRAR_ID);
+				throw new AccesoDatosException("No se ha podido llamar al procedimiento " + PRODUCTOS_BORRAR_ID,e);
 			}
 		} catch (SQLException e) {
 			throw new AccesoDatosException("Ha habido un error al cerrar la conexión a la base de datos", e);
