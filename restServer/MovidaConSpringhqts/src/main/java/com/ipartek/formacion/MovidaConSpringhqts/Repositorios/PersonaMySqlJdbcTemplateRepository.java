@@ -23,19 +23,36 @@ public class PersonaMySqlJdbcTemplateRepository implements RESTable<Persona> {
 		return jdbcTemplate.query("select * from personas", new PersonasMapper());
 	}
 	
+	@Override
+	public Persona getById(Long id) {
+		
+		return  jdbcTemplate.queryForObject("SELECT * FROM personas WHERE id = ?", new Object[] { id },
+	            new PersonasMapper());
+	} 
+	
+	@Override
+	public void deleteById(Long id) {
+		jdbcTemplate.update("Delete FROM personas p WHERE p.id = ?", new Object[]{ id });
+
+	}
+	
+	@Override
+	public Persona insert(Long id, Persona persona) {
+		
+		return persona;
+	}
+
+	@Override
+	public Persona modify(Long id, Persona persona) {
+	
+		return persona;
+	}
+	
+	
 	private static final class PersonasMapper implements RowMapper<Persona> {
 		public Persona mapRow(ResultSet rs, int rowNum) throws SQLException {
 			return new Persona(rs.getLong("id"), rs.getString("nombre"),rs.getString("apellido"));
 		}
-		private static final class PersonaMapper implements RowMapper<Persona> {
-			public Persona mapRow(ResultSet rs, int rowNum) throws SQLException {
-				return new Persona(rs.getLong("id"), rs.getString("nombre"),rs.getString("apellido"));
-			}
-}
+	}
 
-	
-
-	@Override
-	public Persona getById(Long id) {
-		return jdbcTemplate.query("select * from personas where id=?", new PersonaMapper());
-	}}
+	}
