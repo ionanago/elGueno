@@ -37,7 +37,7 @@ public class PersonaMySqlJdbcTemplateRepository implements RESTable<Persona> {
 	}
 	
 	@Override
-	public Persona insert(Long id, Persona persona) {
+	public Persona insert( Persona persona) {
 		
 		return persona;
 	}

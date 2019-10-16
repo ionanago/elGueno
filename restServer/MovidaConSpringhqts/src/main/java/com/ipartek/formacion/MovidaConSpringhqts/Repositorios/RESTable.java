@@ -10,7 +10,7 @@ public interface RESTable<T> {
 		
 		public void deleteById(Long id);
 
-		public Persona insert(Long id,Persona persona);
+		public Persona insert(Persona persona);
 		
 		public Persona modify(Long id,Persona persona);
 }
