@@ -48,7 +48,7 @@ public class PersonaControlador {
 	
 	@PostMapping("/api/personas")
 	public Persona añadirPersona(@RequestBody Persona persona) {
-		System.out.println("persona a añadir: " +persona);
+		System.out.println("Le persona auf añadire: " +persona);
 		
 		return PersonaRepositorio.insert(persona);
 	}
