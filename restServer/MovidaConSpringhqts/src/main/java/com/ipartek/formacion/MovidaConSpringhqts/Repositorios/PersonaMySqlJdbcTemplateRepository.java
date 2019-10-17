@@ -43,6 +43,15 @@ public class PersonaMySqlJdbcTemplateRepository implements RESTable<Persona> {
 	}
 	
 	@Override
+	public Persona modify(Long id, Persona persona) {
+	
+		jdbcTemplate.update(
+                "update personas set nombre = ?, apellido = ? where id = ?", persona.getNombre() ,persona.getApellidos(), id  );
+ 
+		return persona;
+	}
+	
+	@Override
 	public Persona insert( Persona persona)  {
 		try (Connection con = jdbcTemplate.getDataSource().getConnection()){
 			
@@ -64,11 +73,6 @@ public class PersonaMySqlJdbcTemplateRepository implements RESTable<Persona> {
 		return persona;
 }
 
-	@Override
-	public Persona modify(Long id, Persona persona) {
-	
-		return persona;
-	}
 	
 	
 	private static final class PersonasMapper implements RowMapper<Persona> {

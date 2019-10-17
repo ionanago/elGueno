@@ -2,7 +2,6 @@ package com.ipartek.formacion.MovidaConSpringhqts.Controladores;
 
 import java.util.List;
 
-import org.hibernate.cfg.NotYetImplementedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,13 +41,15 @@ public class PersonaControlador {
 	}
 	
 	@PutMapping("/api/personas/{id}")
-	public Persona modificarPersona() {
-		throw new NotYetImplementedException();
+	public Persona modificarPersona(@PathVariable("id") Long id,@RequestBody Persona persona) {
+		System.out.println("Le Persona auf modificare:" + PersonaRepositorio.getById(id).toString() + "con les nueves dates: "+ persona.toString());
+		return PersonaRepositorio.modify(id, persona);
 	}
 	
 	@PostMapping("/api/personas")
-	public Persona añadirPersona(@RequestBody Persona personae) {
-		System.out.println();
-		throw new NotYetImplementedException();
+	public Persona añadirPersona(@RequestBody Persona persona) {
+		System.out.println("persona a añadir: " +persona);
+		
+		return PersonaRepositorio.insert(persona);
 	}
 }
