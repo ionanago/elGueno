@@ -1,7 +1,12 @@
 package com.ipartek.formacion.MovidaConSpringhqts.Repositorios;
 
+
+
+import java.sql.CallableStatement;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +19,7 @@ import com.ipartek.formacion.MovidaConSpringhqts.Modelos.Persona;
 
 @Repository
 public class PersonaMySqlJdbcTemplateRepository implements RESTable<Persona> {
+	private static final String PERSONA_INSERT = "{call persona_insert(?, ?, ?)}";
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
@@ -37,10 +43,26 @@ public class PersonaMySqlJdbcTemplateRepository implements RESTable<Persona> {
 	}
 	
 	@Override
-	public Persona insert( Persona persona) {
-		
-		return persona;
+	public Persona insert( Persona persona)  {
+		try (Connection con = jdbcTemplate.getDataSource().getConnection()){
+			
+			try(  CallableStatement cs = con.prepareCall(PERSONA_INSERT)){
+			  cs.setString(1, persona.getNombre());
+			  cs.setString(2, persona.getApellidos());
+			  cs.registerOutParameter(3,Types.INTEGER);
+			  cs.executeUpdate();
+			  
+			  persona.setId(cs.getLong(3));
+			  
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
 	}
+		return persona;
+}
 
 	@Override
 	public Persona modify(Long id, Persona persona) {
