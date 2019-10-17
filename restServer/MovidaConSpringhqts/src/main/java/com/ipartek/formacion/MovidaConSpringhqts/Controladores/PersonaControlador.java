@@ -2,12 +2,14 @@ package com.ipartek.formacion.MovidaConSpringhqts.Controladores;
 
 import java.util.List;
 
+import org.hibernate.cfg.NotYetImplementedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ipartek.formacion.MovidaConSpringhqts.Modelos.Persona;
@@ -41,11 +43,12 @@ public class PersonaControlador {
 	
 	@PutMapping("/api/personas/{id}")
 	public Persona modificarPersona() {
-		return null;
+		throw new NotYetImplementedException();
 	}
 	
 	@PostMapping("/api/personas")
-	public Persona añadirPersona() {
-		return null;
+	public Persona añadirPersona(@RequestBody Persona personae) {
+		System.out.println();
+		throw new NotYetImplementedException();
 	}
 }
