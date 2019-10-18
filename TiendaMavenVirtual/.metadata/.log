@@ -8524,3 +8524,15 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-18 13:51:07.710
 !MESSAGE executing callback sts4.classpath.isRpccMu SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-18 14:12:07.596
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.isRpccMu
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-18 14:12:07.596
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.isRpccMu
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-18 14:12:07.596
+!MESSAGE subsribers = {}
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-18 14:12:07.596
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.isRpccMu => OK
