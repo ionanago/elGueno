@@ -15,6 +15,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+    	http.authorizeRequests().antMatchers("/css/**", "/js/**", "/images/**").permitAll();
         http//.authorizeRequests().anyRequest().permitAll();
             .authorizeRequests()
                 .antMatchers("/", "/home").permitAll()
