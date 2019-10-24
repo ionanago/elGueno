@@ -32,4 +32,4 @@
 		<a class="navbar-brand" href="/">A lo loco Spring</a>
 	</nav>
 
-
+<main class="container">

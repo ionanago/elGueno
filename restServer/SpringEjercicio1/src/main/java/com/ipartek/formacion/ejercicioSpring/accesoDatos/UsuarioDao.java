@@ -1,13 +1,14 @@
 package com.ipartek.formacion.ejercicioSpring.accesoDatos;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import com.ipartek.formacion.ejercicioSpring.modelos.Usuario;
 import com.ipartek.formacion.ejercicioSpring.repositorio.UsuarioRepositorio;
-
+@Named
 public class UsuarioDao implements Dao<Long, Usuario>{
 	@Inject
-	UsuarioRepositorio repositorio;
+	private UsuarioRepositorio repositorio;
 	@Override
 	public Iterable<Usuario> getAll() {
 		
