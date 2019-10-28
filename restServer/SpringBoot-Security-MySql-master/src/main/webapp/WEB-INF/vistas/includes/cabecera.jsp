@@ -33,7 +33,7 @@
 	<!-- Image and text -->
 	<nav class="navbar navbar-dark bg-dark sticky-top">
 		<a class="navbar-brand" href="/">spring login</a>
-		<c:if test="${httpServletRequest.remoteUser != null} ">
+		<c:if test="${pageContext.request.remoteUser != null}">
 			<form action="/logout" method="post">
 				<input type="submit" value="Cerrar Sesion" />
 			</form>

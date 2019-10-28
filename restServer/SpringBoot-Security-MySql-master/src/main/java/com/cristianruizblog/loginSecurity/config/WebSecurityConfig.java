@@ -24,22 +24,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		http
 		//.csrf().disable()
-		.authorizeRequests()
-		.antMatchers(resources).permitAll()
-		.antMatchers("/", "/index").permitAll().antMatchers("/admin/**").access("hasRole('ADMIN')")
-		.antMatchers("/user/**").access("hasRole('USER') or hasRole('ADMIN')")
-		.anyRequest()
-		.authenticated()
-	.and()
-		.formLogin()
-		.loginPage("/login").permitAll()
-		.usernameParameter("username")
-		.passwordParameter("password")
-		.defaultSuccessUrl("/menu")
-		.failureUrl("/login?error=true")
-	.and()
-		.logout().permitAll()
-		.logoutSuccessUrl("/login?logout");
+		  .authorizeRequests()
+	        .antMatchers(resources).permitAll()  
+	        .antMatchers("/","/index").permitAll()
+	        .antMatchers("/admin*").access("hasRole('ADMIN')")
+	        .antMatchers("/user*").access("hasRole('USER') or hasRole('ADMIN')")
+              .anyRequest().authenticated()
+              .and()
+          .formLogin()
+              .loginPage("/login")
+              .permitAll()
+              .defaultSuccessUrl("/menu")
+              .failureUrl("/login?error=true")
+              .usernameParameter("username")
+              .passwordParameter("password")
+              .and()
+          .logout()
+              .permitAll()
+              .logoutSuccessUrl("/login?logout");
 	}
 
 	BCryptPasswordEncoder bCryptPasswordEncoder;

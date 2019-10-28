@@ -22,12 +22,12 @@
                 
                 <c:if test="${param.error}">
                 <div  class="alert alert-danger" role="alert">
-		            Invalid username and password.
+		            Usuario y contraseña incorrectos.
 		        </div>
 		        </c:if>
 		        <c:if test="${param.logout}">
 		        <div  class="alert alert-success" role="alert">
-		            You have been logged out.
+		            Sesión cerrada exitosamente.
 		        </div>
 		        </c:if>
             </div>
