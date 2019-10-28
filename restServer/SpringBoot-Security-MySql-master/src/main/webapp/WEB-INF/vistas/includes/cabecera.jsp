@@ -10,6 +10,9 @@
 <link href="css/bootstrap.min.css" rel="stylesheet" />
 <link href="css/fontawesome-all.min.css" rel="stylesheet" />
 
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
 <script src="js/jquery-3.4.1.min.js"></script>
 <script src="js/popper.js"></script>
@@ -24,17 +27,17 @@
 <body>
 
 
-<header>
+	<header>
 		<h1>spring login</h1>
 	</header>
 	<!-- Image and text -->
 	<nav class="navbar navbar-dark bg-dark sticky-top">
 		<a class="navbar-brand" href="/">spring login</a>
 		<c:if test="${httpServletRequest.remoteUser != null} ">
-		<form action="/logout" method="post">
-            <input type="submit" value="Cerrar Sesion"/>
-        </form>
-        </c:if>
+			<form action="/logout" method="post">
+				<input type="submit" value="Cerrar Sesion" />
+			</form>
+		</c:if>
 	</nav>
 
-<main class="container">
+	<main class="container">

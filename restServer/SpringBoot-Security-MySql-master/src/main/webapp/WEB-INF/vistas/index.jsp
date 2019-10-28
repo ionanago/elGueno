@@ -1,6 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ include file="/WEB-INF/vistas/includes/cabecera.jsp"%>
+
+
  <div class="modal-dialog text-center">
         <div class="col-sm-8 main-section">
             <div class="modal-content">
@@ -15,10 +17,9 @@
                         <input type="password" class="form-control" placeholder="Contrasena" name="password"/>
                     </div>
                     <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Ingresar </button>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 </form>
-                <div class="col-12 forgot">
-                    <a href="#">Recordar contrasena?</a>
-                </div>
+                
                 <c:if test="${param.error}">
                 <div  class="alert alert-danger" role="alert">
 		            Invalid username and password.

@@ -23,7 +23,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	
     @Override
      public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		
+		System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
      //Buscar el usuario con el repositorio y si no existe lanzar una exepcion
      com.cristianruizblog.loginSecurity.entity.User appUser = 
                  userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("No existe usuario"));
