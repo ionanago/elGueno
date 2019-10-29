@@ -56,14 +56,26 @@ body{
 
 
 .appcenter{
-	background-color: #C4C4C4;
+	 background-color: #3b4652;
+    opacity: .85;
+	margin-top: 1em;
 	text-align: center;
-	text-shadow: graytext;
-	text-decoration: blink;
+	color:#dadada;
+	padding-bottom: 1em;
+	border-radius: 20px;
+
+	
 }
-
-
-
+td{
+	text-align: center;
+	color:#dadada;
+}
+.appcenter > h2  {
+	text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+}
+ th {
+	color:#aa52c7;
+}
 
 button{
     width: 60%;
