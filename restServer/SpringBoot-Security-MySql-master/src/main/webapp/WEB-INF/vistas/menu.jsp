@@ -2,15 +2,17 @@
 <!-- 
 httpServletRequest.remoteUser
 -->
+<div class="appcenter">
 <h2>Hello ${pageContext.request.remoteUser}</h2>
-<form action="/logout" method="post">
+<!-- <form action="/logout" method="post">
 	<input type="hidden" name="${_csrf.parameterName}"
 		value="${_csrf.token}" /> <input type="submit" value="Cerrar Sesion" />
 
-</form>
-<h2>
-	<a href="/admin"> admin</a> | <a href="/user"> user</a>
-</h2>
+</form>-->
+<h3>
+	<a href="/admin" class="btn btn-light"> seccion administración</a> 
+	<a href="/user" class="btn btn-light"> seccion normal y corriente</a>
+</h3>
 
-
+</div>
 <%@ include file="/WEB-INF/vistas/includes/pie.jsp"%>
