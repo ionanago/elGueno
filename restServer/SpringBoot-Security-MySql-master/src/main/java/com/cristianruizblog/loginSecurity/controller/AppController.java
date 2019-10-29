@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.cristianruizblog.loginSecurity.service.ProductoService;
+import com.cristianruizblog.loginSecurity.service.UsuarioService;
 
 @Controller
 public class AppController implements ErrorController {
@@ -34,6 +35,27 @@ public class AppController implements ErrorController {
 				getAll());
 		return "user";
 	}
+	@GetMapping("/proGest")
+	public String productogestion(Model model) {
+		model.
+		addAttribute
+		("productos",pservicio.getAll());
+		return "gestionProductos";
+	}
+	
+	
+	@Inject
+	private UsuarioService uservicio;
+	
+	@GetMapping("/usuGest")
+	public String usuariogestion(Model model) {
+		model.
+		addAttribute
+		("usuarios",uservicio.getAll());
+		return "gestionUsuarios";
+	}
+	
+	
 	
 	@GetMapping("/admin")
 	public String admin() {
