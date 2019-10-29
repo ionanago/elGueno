@@ -43,7 +43,6 @@ public class AppController implements ErrorController {
 		return "gestionProductos";
 	}
 	
-	
 	@Inject
 	private UsuarioService uservicio;
 	

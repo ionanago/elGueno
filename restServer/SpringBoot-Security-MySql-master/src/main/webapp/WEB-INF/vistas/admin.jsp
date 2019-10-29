@@ -4,8 +4,8 @@
 
 
 	<h3>
-		<a href="/producto" class="btn btn-light"> administar productos</a> 
-		<a href="/usuarios" class="btn btn-light">administrar usuarios</a>
+		<a href="/proGest" class="btn btn-light"> administar productos</a> 
+		<a href="/usuGest" class="btn btn-light">administrar usuarios</a>
 	</h3>
 
 </div>
