@@ -30,18 +30,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	        .antMatchers("/admin*").access("hasRole('ADMIN')")
 	        .antMatchers("/user*").access("hasRole('USER') or hasRole('ADMIN')")
               .anyRequest().authenticated()
-              .and()
-          .formLogin()
+            .and()
+              .formLogin()
               .loginPage("/login")
               .permitAll()
               .defaultSuccessUrl("/menu")
               .failureUrl("/login?error=true")
               .usernameParameter("username")
               .passwordParameter("password")
-              .and()
-          .logout()
+           .and()
+              .logout()
               .permitAll()
-              .logoutSuccessUrl("/login?logout");
+              .logoutSuccessUrl("/login?logout")
+           .and()
+              .exceptionHandling().accessDeniedPage("/403");
+              
 	}
 
 	BCryptPasswordEncoder bCryptPasswordEncoder;
