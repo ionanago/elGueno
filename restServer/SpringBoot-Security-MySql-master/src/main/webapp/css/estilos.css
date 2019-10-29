@@ -55,7 +55,12 @@ body{
 }
 
 
-
+.appcenter{
+	background-color: #C4C4C4;
+	text-align: center;
+	text-shadow: graytext;
+	text-decoration: blink;
+}
 
 
 

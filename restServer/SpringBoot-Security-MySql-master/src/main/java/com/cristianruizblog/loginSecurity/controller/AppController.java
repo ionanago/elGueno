@@ -25,4 +25,12 @@ public class AppController {
 	public String admin() {
 		return "admin";
 	}
+	 @GetMapping("/403")
+	    public String accessDenied() {
+	        return "403";
+	    }
+	 @GetMapping("/500")
+	    public String serverError() {
+	        return "500";
+	    }
 }
