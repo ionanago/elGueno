@@ -22,22 +22,28 @@
 
 <head>
 <meta charset="UTF-8">
-<title>spring login copy and mod</title>
+<title>spring copy and mod</title>
 </head>
 <body>
 
 
 	<header>
-		<h1>spring login</h1>
+		<h1>spring copy/mod/more</h1>
 	</header>
 	<!-- Image and text -->
 	<nav class="navbar navbar-dark bg-dark sticky-top">
-		<a class="navbar-brand" href="/">spring login</a>
+		
 		<c:if test="${pageContext.request.remoteUser != null}">
+		<a class="navbar-brand" href="/menu">spring copy/mod/more</a>
 			<form action="/logout" method="post">
-				<input type="submit" value="Cerrar Sesion" />
+				<input type="submit" value="Cerrar Sesion" class="btn btn-light"/>
+				 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			</form>
 		</c:if>
+		<c:if test="${pageContext.request.remoteUser == null}">
+		<a class="navbar-brand" href="/">spring copy/mod/more</a>
+		</c:if>
+		
 	</nav>
 
 	<main class="container">
