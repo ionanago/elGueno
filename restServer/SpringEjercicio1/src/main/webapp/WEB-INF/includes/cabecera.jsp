@@ -19,17 +19,17 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Spring 1</title>
+<title>listado spring</title>
 </head>
 <body>
 
 
 <header>
-		<h1>copi &amp; mod</h1>
+		<h1>listado spring</h1>
 	</header>
 	<!-- Image and text -->
 	<nav class="navbar navbar-dark bg-dark sticky-top">
-		<a class="navbar-brand" href="/">copiado y modificado de un blog</a>
+		<a class="navbar-brand" href="/">listado spring</a>
 	</nav>
 
 <main class="container">
