@@ -23,13 +23,13 @@ public class ProductoDao implements Dao<Long, Producto>{
 	}
 
 	@Override
-	public Producto insert(Producto objeto) {
+	public Producto insert(Producto producto) {
 		
-		return null;
+		return repo.save(producto);
 	}
 
 	@Override
-	public Producto update(Producto objeto) {
+	public Producto update(Producto producto) {
 		
 		return null;
 	}
@@ -39,5 +39,8 @@ public class ProductoDao implements Dao<Long, Producto>{
 		
 		
 	}
-
+	
+	public void delete(Producto producto) {
+		repo.delete(producto);
+	}
 }
