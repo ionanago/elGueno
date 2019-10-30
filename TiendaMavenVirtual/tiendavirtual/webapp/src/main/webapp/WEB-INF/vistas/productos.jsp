@@ -11,7 +11,7 @@
 				<th>Descripción</th>
 				<th>Precio</th>
 				<th><a href="producto" class="btn btn-primary mx-2"> Añadir producto </a></th>
-				<th/>
+				
 			</tr>
 		</thead>
 		<tbody>
@@ -20,8 +20,7 @@
 					<th>${p.id}</th>
 					<td>${p.nombre}</td>
 					<td>${p.descripcion}</td>
-					<td><fmt:formatNumber value="${p.precio}" type="currency" />
-					</td>
+					<td><fmt:formatNumber value="${p.precio}" type="currency" /></td>
 					<td><a class="btn btn-primary" href="producto?id=${p.id}">Modificar</a>
 						<%--<a onclick="return confirm('¿Estás seguro de que quieres borrar el registro cuyo id es ${libro.id}?')" class="btn btn-danger" href="admin/libroprocesar?op=borrar&id=${libro.id}">Borrar</a>--%>
 						<form style="display: inline" method="post" action="producto"
