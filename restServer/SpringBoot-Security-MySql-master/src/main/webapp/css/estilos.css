@@ -18,8 +18,9 @@ h1{display:none;}
 
 
 body{
-    background: url(../img/universe.jpg) no-repeat center center fixed;
+    background: url(../img/space1.png) no-repeat center center  fixed;
     background-size: cover;
+    background-color: #000000;
 }
 
 .main-section{
