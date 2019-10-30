@@ -18,25 +18,25 @@ public class ProductoDao implements Dao<Long, Producto>{
 
 	@Override
 	public Producto getById(Long id) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public Producto insert(Producto objeto) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public Producto update(Producto objeto) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

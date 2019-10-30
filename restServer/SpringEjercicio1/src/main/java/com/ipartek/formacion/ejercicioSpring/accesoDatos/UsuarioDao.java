@@ -17,25 +17,25 @@ public class UsuarioDao implements Dao<Long, Usuario>{
 
 	@Override
 	public Usuario  getById(Long id) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public Usuario insert(Usuario usuario) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public Usuario update(Usuario usuario) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
