@@ -9,10 +9,10 @@ httpServletRequest.remoteUser
 		value="${_csrf.token}" /> <input type="submit" value="Cerrar Sesion" />
 
 </form>-->
-<h3>
+<h4>
 	<a href="/admin" class="btn btn-light"> seccion administración</a> 
 	<a href="/user" class="btn btn-light"> seccion normal y corriente</a>
-</h3>
+</h4>
 
 </div>
 <%@ include file="/WEB-INF/vistas/includes/pie.jsp"%>
