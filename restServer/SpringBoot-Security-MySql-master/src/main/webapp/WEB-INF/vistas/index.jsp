@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ include file="/WEB-INF/vistas/includes/cabecera.jsp"%>
+<%@ include file="/WEB-INF/vistas/includes/cabecera_login.jsp"%>
 
 
  <div class="modal-dialog text-center">

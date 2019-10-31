@@ -15,4 +15,12 @@ public class UsuarioService {
 	public Iterable<User> getAll() {
 		return dao.getAll();
 	}
+	public void borrar(User usuario) {
+		dao.delete(usuario.getId());
+	}
+	
+	
+	public User insertar(User usuario) {
+		return dao.insert(usuario);
+	}
 }
