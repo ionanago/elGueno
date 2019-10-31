@@ -67,6 +67,7 @@ public class AppController implements ErrorController {
 				getAll());
 		return "user";
 	}
+	
 	@GetMapping("/proGest")
 	public String productogestion(Model model) {
 		model.
@@ -110,11 +111,15 @@ public class AppController implements ErrorController {
 	
 	@GetMapping("/403")
     public String accessDenied() {
-        return "403";
+        return "errorPages/403";
+    }
+	@GetMapping("/405")
+    public String methodNotallowed() {
+        return "errorPages/405";
     }
 	 @GetMapping("/error")
 	    public String serverError() {
-	        return "500";
+	        return "errorPages/500";
 	    }
 
 	@Override

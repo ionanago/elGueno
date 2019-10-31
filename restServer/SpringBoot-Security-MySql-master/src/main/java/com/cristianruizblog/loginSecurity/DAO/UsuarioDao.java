@@ -25,7 +25,7 @@ public class UsuarioDao implements Dao<Long,User>{
 	@Override
 	public User insert(User objeto) {
 		
-		return null;
+		return repo.save(objeto);
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class UsuarioDao implements Dao<Long,User>{
 	@Override
 	public void delete(Long id) {
 		
-		
+		repo.deleteById(id);
 	}
 
 }

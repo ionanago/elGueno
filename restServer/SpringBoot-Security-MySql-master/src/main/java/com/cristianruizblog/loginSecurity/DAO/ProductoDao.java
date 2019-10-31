@@ -36,7 +36,7 @@ public class ProductoDao implements Dao<Long, Producto>{
 
 	@Override
 	public void delete(Long id) {
-		
+		repo.deleteById(id);
 		
 	}
 	

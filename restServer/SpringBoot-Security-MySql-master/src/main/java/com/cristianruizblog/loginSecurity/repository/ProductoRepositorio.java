@@ -4,8 +4,8 @@ import org.springframework.stereotype.Repository;
 
 import com.cristianruizblog.loginSecurity.entity.Producto;
 
-@Repository("ProductoRepositorio ")
-public interface  ProductoRepositorio extends CrudRepository<Producto, Integer>{
+@Repository("ProductoRepositorio")
+public interface  ProductoRepositorio extends CrudRepository<Producto, Long>{
 	
 	
 
