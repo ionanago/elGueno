@@ -88,22 +88,22 @@ public class AppController implements ErrorController {
 	//controladores de los fromularios
 	
 	@PostMapping("/ProcesarUsuario")
-	public String procesarFormularioU(@Valid @ModelAttribute User usuario, BindingResult bindingResult) {
+	public String procesarFormularioU(@ModelAttribute("user") User usuario) {
 		
 		User usuEncrypt = new User();
 		usuEncrypt.setUsername(usuario.getUsername());
 		usuEncrypt.setPassword(PassEncoder.encode(usuario.getPassword()));
 		uservicio.insertar(usuEncrypt);
 
-		return "gestionUsuarios";
+		return "redirect:/usuGest";
 	}
 	
 	@PostMapping("/ProcesarProducto")
-	public String procesarFormularioP(@Valid @ModelAttribute Producto producto, BindingResult bindingResult) {
-		
+	public String procesarFormularioP(@Valid @ModelAttribute("producto") Producto producto, BindingResult bindingResult) {
+		System.out.println(producto);
 		pservicio.insertar(producto);
 
-		return "gestionProductos";
+		return "redirect:/proGest";
 	}
 	
 	 

@@ -13,6 +13,7 @@
 	</div>
 	<div class="form-group">
 	<button type="submit" class="btn btn-primary">Aceptar</button>
+	 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	</div>
 </form>
 	
