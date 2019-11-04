@@ -23,6 +23,7 @@ public class AppController implements ErrorController {
 	BCryptPasswordEncoder PassEncoder = new BCryptPasswordEncoder(4);
 	//variables de los servicios	
 	@Inject
+	
 	private ProductoService pservicio;
 	@Inject
 	private UsuarioService uservicio;
