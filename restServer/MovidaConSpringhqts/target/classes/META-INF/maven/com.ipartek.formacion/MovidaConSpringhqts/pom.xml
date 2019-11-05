@@ -8,6 +8,7 @@
 	<groupId>com.ipartek.formacion</groupId>
 	<artifactId>MovidaConSpringhqts</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
 	<name>MovidaConSpringhqts</name>
 	<!-- FIXME change it to the project's website -->
@@ -51,7 +52,14 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency><!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
-
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+		</dependency>
         
 	</dependencies>
 
