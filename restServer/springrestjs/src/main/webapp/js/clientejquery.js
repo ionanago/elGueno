@@ -8,7 +8,7 @@ var URLUPDATE = 'http://localhost:8080/api/productos/';
 
 
 jQuery(function($) { //Equivalente a window.onload
-	$('button').click(function(e) {
+	$('#btninsertar').click(function(e) {
 		e.preventDefault(); //Cancelar la emisión del formulario por el action
 
 		var nombre = $('#nombre').val();
