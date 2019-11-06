@@ -3,6 +3,8 @@
 var URLPOST = 'http://localhost:8080/api/productos/';
 var URLDELETE = 'http://localhost:8080/api/productos/';
 var URLGET = 'http://localhost:8080/api/productos/';
+var URLUPDATE = 'http://localhost:8080/api/productos/';
+
 
 
 jQuery(function($) { //Equivalente a window.onload
@@ -17,7 +19,7 @@ jQuery(function($) { //Equivalente a window.onload
 
 		console.log(producto);
 
-		ajaxRest($, URLPOST, 'POST', producto).done(function(respuesta) {
+		ajaxRest($, URLPOST, 'POST', producto,"").done(function(respuesta) {
 			console.log(respuesta);
 			addProductoAListado($, producto);
 		}).fail(function(jqXHR, textStatus, errorThrown) {
@@ -42,7 +44,7 @@ function ajaxRest($, url, metodo, producto,id) {
 function listarProductos($) {
 	$('#productos').empty();
 
-	$.getJSON(URL, function(respuesta) {
+	$.getJSON(URLGET, function(respuesta) {
 		var productos = respuesta._embedded.productos;
 		console.log(productos);
 		$(productos).each(function() {

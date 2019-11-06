@@ -3,24 +3,89 @@
 <head>
 <meta charset="UTF-8">
 <title>Cliente JS</title>
+<link href="css/bootstrap.min.css" rel="stylesheet" />
+<link href="css/fontawesome-all.min.css" rel="stylesheet" />
 <script src="js/jquery.min.js"></script>
+
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
 <script>
 	$.noConflict();
 </script>
 <!-- <script src="js/cliente.js"></script> -->
 <script src="js/clientejquery.js"></script>
 <!-- <script src="js/clientees2018.js"></script> -->
+<link href="css/estilos.css" rel="stylesheet" />
 </head>
 <body>
-<h1>Cliente JS</h1>
 
-<form>
-	<input id="nombre" placeholder="Nombre" value="Teclado" />
-	<input id="descripcion" placeholder="Descripción" value="Teclado mecánico" />
-	<input type="number" step=".01" id="precio" placeholder="Precio" value="100"/>
-	<button>Aceptar</button>
-</form>
+	<header>
+		<h1>js-rest</h1>
+	</header>
+	<!-- Image and text -->
+	<nav class="navbar navbar-dark bg-dark sticky-top">
+		<a class="navbar-brand" id="inicio" href="/">js-rest</a> <a
+			class="navbar-brand" id="insertar" href="/">Añadir Producto</a>
+	</nav>
 
-<ul id="productos"></ul>
+	<main class="container">
+        <!-- modal del formulario de añadir -->
+		<div class="modal" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Añadir</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<input id="nombre" class="form-group" placeholder="Nombre"
+								/> <input id="descripcion" class="form-group"
+								placeholder="Descripción"  /> <input
+								type="number" class="form-group" step=".01" id="precio"
+								placeholder="Precio"  />
+							<button id="btninsertar" class="btn btn-primary">Añadir</button>
+						</form>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<!-- modal del formulario de modificar -->
+		<div class="modal" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Modificar</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<input id="nombreMod" class="form-group" placeholder="Nombre" /> 
+							<input id="descripcion" class="form-group" placeholder="Descripción"  /> 
+							<input type="number" class="form-group" step=".01" id="precio"
+								placeholder="Precio" />
+							<button class="btn btn-primary" >Modificar</button>
+						</form>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+
+
+		<ul id="productos"></ul>
+	</main>
 </body>
 </html>
