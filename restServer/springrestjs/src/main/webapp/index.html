@@ -31,7 +31,7 @@
 
 	<main class="container">
         <!-- modal del formulario de añadir -->
-		<div class="modal" tabindex="-1" role="dialog">
+		<div id="agregar" class="modal" tabindex="-1" role="dialog">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -43,11 +43,13 @@
 					</div>
 					<div class="modal-body">
 						<form>
-							<input id="nombre" class="form-group" placeholder="Nombre"
-								/> <input id="descripcion" class="form-group"
+						 <div class="form-group">
+							<input id="nombre" class="form-control" placeholder="Nombre"
+								/> <input id="descripcion" class="form-control"
 								placeholder="Descripción"  /> <input
-								type="number" class="form-group" step=".01" id="precio"
+								type="number" class="form-control" step=".01" id="precio"
 								placeholder="Precio"  />
+								</div>
 							<button id="btninsertar" class="btn btn-primary">Añadir</button>
 						</form>
 					</div>
@@ -59,7 +61,7 @@
 		
 		
 		<!-- modal del formulario de modificar -->
-		<div class="modal" tabindex="-1" role="dialog">
+		<div id="formularioMod"class="modal" tabindex="-1" role="dialog">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -71,11 +73,13 @@
 					</div>
 					<div class="modal-body">
 						<form>
-							<input id="idMod" class="form-group" placeholder="id" readonly/> 
-							<input id="nombreMod" class="form-group" placeholder="Nombre" /> 
-							<input id="descripcion" class="form-group" placeholder="Descripción"  /> 
-							<input type="number" class="form-group" step=".01" id="precio"
+						 <div class="form-group">
+							<input id="url-put" class="form-control" type="hidden"/> 
+							<input id="nombreMod" class="form-control" placeholder="Nombre" /> 
+							<input id="descripcion" class="form-control" placeholder="Descripción"  /> 
+							<input type="number" class="form-control" step=".01" id="precio"
 								placeholder="Precio" />
+						</div>
 							<button class="btn btn-primary" id="btnMod">Modificar</button>
 						</form>
 					</div>
@@ -85,14 +89,13 @@
 		</div>
 
 
-		<table class="table">
+		<table class="table text-center">
 		<thead>
 		<tr>
-		<th>ID</th>
 		<th>NOMBRE</th>
 		<th>DESCRIPCION</th>
 		<th>PRECIO</th>
-		<th><a class="btn btn-success" id="insertar" href="">Añadir</a></th>
+		<th><button class="btn btn-success" type="button" id="insertar" data-toggle="modal" data-target="#agregar">Añadir</button></th>
 		</tr>
 		</thead>
 		<tbody id="productos">

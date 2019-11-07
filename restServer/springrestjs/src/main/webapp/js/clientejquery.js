@@ -6,8 +6,9 @@ var URL = 'http://localhost:8080/api/productos/';
 //});
 
 
-//añadir
+
 jQuery(function($) { //Equivalente a window.onload
+//añadir
 	$('#btninsertar').click(function(e) {
 		e.preventDefault(); //Cancelar la emisión del formulario por el action
 
@@ -17,39 +18,42 @@ jQuery(function($) { //Equivalente a window.onload
 
 		var producto = { nombre, descripcion, precio };
 
-		console.log(producto);
-
-		ajaxRest($, URL, 'POST', producto,"").done(function(respuesta) {
-			alert("Añadido correctamente a la base de datos");
+		//console.log(producto);
+		 $('#agregar').modal('toggle');
+		ajaxRest($, URL, 'POST', producto, "").done(function(respuesta) {
+			console.log("la respuesta")
 			console.log(respuesta);
-			addProductoAListado($, producto);
+			console.log("el producto")
+			console.log(producto);
+			addProductoAListado($, respuesta);
+			
+			alert("Añadido correctamente a la base de datos");
 		}).fail(function(jqXHR, textStatus, errorThrown) {
 			alert(jqXHR.responseJSON.message);
 			console.log(jqXHR, textStatus, errorThrown);
 		});
 	});
 
-	listarProductos($);
-});
+
 
 //pasar datos de tabla a formulario de Mod
-jQuery(function($) {
-	$('#modlink').click(function(e){
+
+	$('.modificar').click(function(e) {
 		e.preventDefault();
-		var padre=$(this).closest('td');
-		 $('#idMod').val();
-		 $('#nombreMod').val($('#nombre').val());
-		 $('#descripcionMod').val($('#descripcion').val());
-		 $('#precioMod').val($('#precio').val());
+		var padre = $(this).closest('td');
+		$('#idMod').val();
+		$('#nombreMod').val($('#nombre').val());
+		$('#descripcionMod').val($('#descripcion').val());
+		$('#precioMod').val($('#precio').val());
 	});
-	
-});
+
+
 
 //modificar
-jQuery(function($) { //Equivalente a window.onload
+
 	$('#btnMod').click(function(e) {
 		e.preventDefault(); //Cancelar la emisión del formulario por el action
-		
+
 		var nombreMod = $('#nombreMod').val();
 		var descripcionMod = $('#descripcionMod').val();
 		var precioMod = $('#precioMod').val();
@@ -68,10 +72,28 @@ jQuery(function($) { //Equivalente a window.onload
 		});
 	});
 
-	listarProductos($);
-});
+
 
 //borrar
+
+
+	$('.borrar').map(function(e) {
+		e.preventDefault(); //Cancelar la emisión del formulario por el action
+			var urlborrar = this;
+		alert(urlborrar);
+
+		ajaxRest($, urlborrar, 'DELETE',"").done(function(respuesta) {
+			alert("Modificado correctamente a la base de datos");
+			console.log(respuesta);
+			addProductoAListado($, producto);
+		}).fail(function(jqXHR, textStatus, errorThrown) {
+			alert(jqXHR.responseJSON.message);
+			console.log(jqXHR, textStatus, errorThrown);
+		});
+	});
+
+	listarProductos($);
+});
 
 function ajaxRest($, url, metodo, producto) {
 	return $.ajax({
@@ -98,16 +120,20 @@ function listarProductos($) {
 //semirefresque
 function addProductoAListado($, producto) {
 	console.log(producto);
-	 var elemento = 
-	  '<tr>'+
-        '<td>' + producto.nombre + '</td>'+
-        '<td>' + producto.descripcion + '</td>'+
-        '<td>' + producto.precio + '</td>'+
-		'<td>' + '<a class="btn btn-info" id="modificar" href="">Modificar</a>'+'<a class="btn btn-danger" id="borrar" href="" >Borrar</a>' + '</td>'+
-      '</tr>';
-      
-   $('#productos').append(elemento);
+	var elemento =
+		'<tr>' +
+		'<td class="nombre">' + producto.nombre + '</td>' +
+		'<td class="descripcion">' + producto.descripcion + '</td>' +
+		'<td class="precio">' + producto.precio + '</td>' +
+
+		'<td class="ops">' +
+		'<a class="btn btn-info modificar"  href="" >Modificar</a>' +
+		'<a class="btn btn-danger borrar"  href="" link="' + producto._links.self.href + '">Borrar</a>' +
+		'</td>' +
+		'</tr>';
+
+	$('#productos').append(elemento);
 	/*$('#productos').append($('<td>').html(
-		producto.nombre + ' ' + producto.descripcion + ' ' + producto.precio));
-		*/
+	  producto.nombre + ' ' + producto.descripcion + ' ' + producto.precio));
+	*/
 };
