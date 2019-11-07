@@ -40,11 +40,12 @@ jQuery(function($) { //Equivalente a window.onload
 
 	$('.modificar').click(function(e) {
 		e.preventDefault();
-		var padre = $(this).closest('td');
-		$('#idMod').val();
-		$('#nombreMod').val($('#nombre').val());
-		$('#descripcionMod').val($('#descripcion').val());
-		$('#precioMod').val($('#precio').val());
+		var padre = $(this).closest('tr');
+		console.log(padre);
+		 $('#formularioMod').modal('toggle');
+		$('padre.nombreMod').val($('#nombre').val());
+		$('padre.descripcionMod').val($('#descripcion').val());
+		$('padre.precioMod').val($('#precio').val());
 	});
 
 
@@ -59,7 +60,7 @@ jQuery(function($) { //Equivalente a window.onload
 		var precioMod = $('#precioMod').val();
 
 		var productoMod = { nombreMod, descripcionMod, precioMod };
-
+		 $('#formularioMod').modal('toggle');
 		console.log(productoMod);
 
 		ajaxRest($, URL, 'PUT', productoMod).done(function(respuesta) {
@@ -75,22 +76,26 @@ jQuery(function($) { //Equivalente a window.onload
 
 
 //borrar
+jQuery(".borrar").click(function(e) {
+ 
+  console.log("algo");
+});
 
+//	$('.borrar').click(function(e) {
+//		
 
-	$('.borrar').map(function(e) {
-		e.preventDefault(); //Cancelar la emisión del formulario por el action
-			var urlborrar = this;
-		alert(urlborrar);
-
-		ajaxRest($, urlborrar, 'DELETE',"").done(function(respuesta) {
-			alert("Modificado correctamente a la base de datos");
-			console.log(respuesta);
-			addProductoAListado($, producto);
-		}).fail(function(jqXHR, textStatus, errorThrown) {
-			alert(jqXHR.responseJSON.message);
-			console.log(jqXHR, textStatus, errorThrown);
-		});
-	});
+//			var urlborrar = this;
+//		console.log(this);
+//
+//		ajaxRest($, urlborrar, 'DELETE',"").done(function(respuesta) {
+//			alert("Modificado correctamente a la base de datos");
+//			console.log(respuesta);
+//			
+//		}).fail(function(jqXHR, textStatus, errorThrown) {
+//			alert(jqXHR.responseJSON.message);
+//			console.log(jqXHR, textStatus, errorThrown);
+//		});
+//	});
 
 	listarProductos($);
 });
@@ -127,8 +132,8 @@ function addProductoAListado($, producto) {
 		'<td class="precio">' + producto.precio + '</td>' +
 
 		'<td class="ops">' +
-		'<a class="btn btn-info modificar"  href="" >Modificar</a>' +
-		'<a class="btn btn-danger borrar"  href="" link="' + producto._links.self.href + '">Borrar</a>' +
+		'<button class="btn btn-info modificar"  link="' + producto._links.self.href + '"  >Modificar</button>' +
+		'<button class="btn btn-danger borrar"  link="' + producto._links.self.href + '">Borrar</button>' +
 		'</td>' +
 		'</tr>';
 
