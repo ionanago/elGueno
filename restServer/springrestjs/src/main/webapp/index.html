@@ -26,8 +26,7 @@
 	</header>
 	<!-- Image and text -->
 	<nav class="navbar navbar-dark bg-dark sticky-top">
-		<a class="navbar-brand" id="inicio" href="/">js-rest</a> <a
-			class="navbar-brand" id="insertar" href="/">Añadir Producto</a>
+		<a class="navbar-brand" id="inicio" href="/">js-rest</a> 
 	</nav>
 
 	<main class="container">
@@ -72,6 +71,7 @@
 					</div>
 					<div class="modal-body">
 						<form>
+							<input id="idMod" class="form-group" placeholder="id" readonly/> 
 							<input id="nombreMod" class="form-group" placeholder="Nombre" /> 
 							<input id="descripcion" class="form-group" placeholder="Descripción"  /> 
 							<input type="number" class="form-group" step=".01" id="precio"
@@ -85,7 +85,21 @@
 		</div>
 
 
-		<ul id="productos"></ul>
+		<table class="table">
+		<thead>
+		<tr>
+		<th>ID</th>
+		<th>NOMBRE</th>
+		<th>DESCRIPCION</th>
+		<th>PRECIO</th>
+		<th><a class="btn btn-success" id="insertar" href="">Añadir</a></th>
+		</tr>
+		</thead>
+		<tbody id="productos">
+		
+		</tbody>
+		
+		</table>
 	</main>
 </body>
 </html>
